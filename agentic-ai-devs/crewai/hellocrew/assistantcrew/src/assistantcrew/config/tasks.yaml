@@ -1,0 +1,13 @@
+analysis_task:
+  description: >
+    Detect customer or user sentiments in the following text: {text}
+  expected_output: >
+    either positive, negative, or neutral
+  agent: assistant_agent
+
+dbinsert_task:
+  description: >
+    Save the following customer or user sentiments in a database: {text}
+  expected_output: >
+    Saved
+  agent: db_agent
