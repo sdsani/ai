@@ -1,6 +1,6 @@
-# Assistantcrew Crew
+# CrewAI commands
 
-Welcome to the Assistantcrew Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+This document provide list of helpful commands.
 
 ## Installation
 
@@ -18,6 +18,13 @@ Next, navigate to your project directory and install the dependencies:
 ```bash
 crewai install
 ```
+
+### Creating the project
+
+```bash
+crewai create crew <NameOfTheCrew>
+```
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
