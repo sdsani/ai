@@ -19,10 +19,11 @@ Next, navigate to your project directory and install the dependencies:
 crewai install
 ```
 
-### Creating the project
+### Create
 
 ```bash
 crewai create crew <NameOfTheCrew>
+crewai create flow <helloworldflow>
 ```
 
 ### Customizing
@@ -34,12 +35,15 @@ crewai create crew <NameOfTheCrew>
 - Modify `src/assistantcrew/crew.py` to add your own logic, tools and specific args
 - Modify `src/assistantcrew/main.py` to add custom inputs for your agents and tasks
 
-## Running the Project
+## Running
 
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
-$ crewai run
+crewai run
+crewai flow kickoff
+or 
+uv run kickoff
 ```
 
 This command initializes the AssistantCrew Crew, assembling the agents and assigning them tasks as defined in your configuration.
