@@ -11,11 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestClient;
 
-@Configuration
-@Slf4j
+//@Configuration
+//@Slf4j
 public class AIConfig {
 
-    //@Bean
+    /*
+    @Bean
     public CommandLineRunner randomCity(ChatClient.Builder builder) {
         return args -> {
 
@@ -28,14 +29,18 @@ public class AIConfig {
             log.info(response);
         };
     }
+    */
 
-    //@Bean
+    /*
+    @Bean
     public CommandLineRunner commandLineRunner(ChatClient.Builder chatClientBuilder) {
         return args -> {
           new ChainWorkFlow(chatClientBuilder.build()).chain();
         };
     }
+    */
 
+    /*
     @Bean
     public CommandLineRunner findLatestSpringCloudAWSVersion(ChatClient.Builder builder,
                                                              RestClient.Builder rcBuilder,
@@ -81,5 +86,5 @@ public class AIConfig {
             // Response of this call is here
             // ArtifactVersionDto[groupId=io.awspring.cloud, artifactId=spring-cloud-aws, version=4.0.2, lastUpdated=20260429220547]
         };
-    }
+    }*/
 }
