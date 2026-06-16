@@ -1,5 +1,11 @@
 spring:
   ai:
+    chat:
+      client:
+        # Observability: https://docs.spring.io/spring-ai/reference/observability/index.html
+        observation:
+          log-prompt: true
+          log-completion: true
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:

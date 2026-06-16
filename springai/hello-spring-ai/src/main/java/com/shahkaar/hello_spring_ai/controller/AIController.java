@@ -22,6 +22,6 @@ public class AIController {
     public String toolsExample() {
 
         log.info("====> Calling ai/tools");
-        return springCloudAWSVersionFinder.findLatestVersion("io.awspring.cloud", "spring-cloud-aws-dependencies");
+        return springCloudAWSVersionFinder.chat("1234", "io.awspring.cloud", "spring-cloud-aws-dependencies");
     }
 }

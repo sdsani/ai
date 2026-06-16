@@ -6,33 +6,31 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.ai.chat.memory.ChatMemory;
 
 @Service
 @Slf4j
 public class SpringCloudAWSVersionFinder {
+
+    private static final String SYSTEM_PROMPT = """
+                            You are system engineer. Working on upgrading a Spring boot application.
+                            Spring cloud AWS is one of the framework part of your application.
+                            You want to find the latest Spring Cloud AWS version available out there.""";
 
     private final ChatClient chatClient;
 
     SpringCloudAWSVersionFinder(ChatClient.Builder builder,
                                 MavenMetaDataTool mavenMetaDataTool) {
         chatClient = builder
-                .defaultSystem("""
-                            You are system engineer. Working on upgrading a Spring boot application.
-                            Spring cloud AWS is one of the framework part of your application.
-                            You want to find the latest Spring Cloud AWS version available out there.""")
+                .defaultSystem( SYSTEM_PROMPT )
                 .defaultTools(mavenMetaDataTool)
                 .build();
         log.info("Chat client has been built {}", "SpringCloudAWSVersionFinder");
     }
 
-    private static final String systemPrompt = """
-                            You are system engineer. Working on upgrading a Spring boot application.
-                            Spring cloud AWS is one of the framework part of your application.
-                            You want to find the latest Spring Cloud AWS version available out there.""";
+    public String chat(String chatId, String groupId, String artifactId) {
 
-    public String findLatestVersion(String groupId, String artifactId) {
-
-        log.info("==> SpringCloudAWSVersionFinder.findLatestVersion service call. groupID: {}, artifactId: {}", groupId, artifactId);
+        log.info("==> SpringCloudAWSVersionFinder.chat service call. groupID: {}, artifactId: {}", groupId, artifactId);
         ArtifactVersionDto response = chatClient
                 .prompt(
                         String.format("Find the latest of spring-cloud-aws-dependencies using using Maven metadata (groupId: %s, artifactId: %s) ",
@@ -40,6 +38,7 @@ public class SpringCloudAWSVersionFinder {
                                 artifactId)
                 )
                 //.tools(new MavenMetaDataExtractorTool(rcBuilder))  // Added to the tools
+                .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .call()
                 .entity(ArtifactVersionDto.class);      // Asking to transform response into a Java object
 
