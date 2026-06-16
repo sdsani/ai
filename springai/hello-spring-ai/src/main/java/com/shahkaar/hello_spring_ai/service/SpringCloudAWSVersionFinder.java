@@ -4,6 +4,7 @@ import com.shahkaar.hello_spring_ai.model.dto.ArtifactVersionDto;
 import com.shahkaar.hello_spring_ai.tools.MavenMetaDataTool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -20,9 +21,11 @@ public class SpringCloudAWSVersionFinder {
     private final ChatClient chatClient;
 
     SpringCloudAWSVersionFinder(ChatClient.Builder builder,
-                                MavenMetaDataTool mavenMetaDataTool) {
+                                MavenMetaDataTool mavenMetaDataTool,
+                                ChatMemory chatMemory) {
         chatClient = builder
                 .defaultSystem( SYSTEM_PROMPT )
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                 .defaultTools(mavenMetaDataTool)
                 .build();
         log.info("Chat client has been built {}", "SpringCloudAWSVersionFinder");
