@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import reactor.core.publisher.Flux;
 
 @Service
 @Slf4j
@@ -22,6 +23,7 @@ public class HelloSpringAI {
         log.info("Chat client has been built {}", "HelloSpringAI");
     }
 
+    // Sync call
     public String chat(String chatId, String cityName) {
 
         log.info("==> HelloSpringAI.chat service call. chatId: {}, cityName: {}", chatId, cityName);
@@ -38,4 +40,19 @@ public class HelloSpringAI {
         log.info(response);
         return response;
     }
+
+    // ASync call
+    public Flux<String> aSyncChat(String chatId, String cityName) {
+
+        log.info("==> HelloSpringAI.aSyncChat service call. chatId: {}, cityName: {}", chatId, cityName);
+
+        return chatClient
+                //.prompt(message)      // Use this option for legacy code.
+                .prompt()
+                .user(u -> u.text("I am visiting {city}. What are the top 3 destination places?")
+                        .param("city", cityName))
+                .stream()
+                .content();
+    }
+
 }

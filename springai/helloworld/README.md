@@ -42,6 +42,14 @@ advisors, and parameters for complex, multi-turn AI workflows.
 
 - [Fluent API Deep Dive](https://dev.to/nk_sk_6f24fdd730188b284bf/understanding-fluent-api-in-spring-a-deep-dive-51lh)
 
+## Pay Attention to following in the HelloSpringAI.java
+
+- .defaultSystem( SYSTEM_PROMPT ) sets the personality and behavior
+- .user( dynamicPrompt )
+- Creativity options set in application.yaml
+  - Above option set's it for all interactions.
+  - Another option is to set it per chat
+
 ## Links
 
 - [Bride the gap between Java and AI](https://mohankumarsagadevan.medium.com/spring-ai-101-bridging-the-gap-between-java-and-generative-ai-f920af1473a1)
