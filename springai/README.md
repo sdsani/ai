@@ -9,12 +9,12 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Description                                                    | Link                                                                                                              | Code Base   |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
 | Spring AI 101: Bridging the gap between Java and generative AI | https://mohankumarsagadevan.medium.com/spring-ai-101-bridging-the-gap-between-java-and-generative-ai-f920af1473a1 | ./helloworld |
-|Mastering the Fluent API and Prompts| https://mohankumarsagadevan.medium.com/spring-ai-101-hello-world-with-chatclient-mastering-the-fluent-api-and-prompts-97beda2cbdd7 | ./hellowolrd |
-
-
-
-Structured Output Mapping to Java Records :https://mohankumarsagadevan.medium.com/spring-ai-101-beyond-plain-text-structured-output-mapping-to-java-records-ef26e9f08150
-
+| Mastering the Fluent API and Prompts | https://mohankumarsagadevan.medium.com/spring-ai-101-hello-world-with-chatclient-mastering-the-fluent-api-and-prompts-97beda2cbdd7 | ./hellowolrd |
+| Structured Output Mapping to Java Records | https://mohankumarsagadevan.medium.com/spring-ai-101-beyond-plain-text-structured-output-mapping-to-java-records-ef26e9f08150 | ./helloworld |
+  
+  
+  
+  
 Empwering AI with @Tools: https://mohankumarsagadevan.medium.com/spring-ai-101-empowering-ai-with-tools-the-tool-annotation-and-function-calling-aa4f9fe64d50
 
 Unlocking the Model Context Protocol (MCP) — Standardizing AI Tools: https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273
