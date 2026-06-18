@@ -63,3 +63,9 @@ advisors, and parameters for complex, multi-turn AI workflows.
   - cd ollama-docker
   - docker compose up -d
 - [Verify](http://localhost:8080)
+- [Ollama Models](https://ollama.com/library)
+
+## Switching between OLLAMA and OpenAI
+Update following files.
+- application.yaml
+- build.gradle
