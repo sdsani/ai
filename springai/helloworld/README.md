@@ -49,9 +49,10 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - Creativity options set in application.yaml
   - Above option set's it for all interactions.
   - Another option is to set it per chat
+- .entity() method in HelloSrpingAi.
 
 ## Links
 
 - [Bride the gap between Java and AI](https://mohankumarsagadevan.medium.com/spring-ai-101-bridging-the-gap-between-java-and-generative-ai-f920af1473a1)
 - [Hello World with Spring AI](https://mohankumarsagadevan.medium.com/spring-ai-101-hello-world-with-chatclient-mastering-the-fluent-api-and-prompts-97beda2cbdd7)
-
+- [Structured Output Mapping to Java Records](https://mohankumarsagadevan.medium.com/spring-ai-101-beyond-plain-text-structured-output-mapping-to-java-records-ef26e9f08150)

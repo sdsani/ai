@@ -1,5 +1,6 @@
 package com.shahkaar.helloworld.service;
 
+import com.shahkaar.helloworld.model.dto.TopDestinationsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
@@ -24,20 +25,20 @@ public class HelloSpringAI {
     }
 
     // Sync call
-    public String chat(String chatId, String cityName) {
+    public TopDestinationsResponse chat(String chatId, String cityName) {
 
         log.info("==> HelloSpringAI.chat service call. chatId: {}, cityName: {}", chatId, cityName);
 
-        String response = chatClient
+        TopDestinationsResponse response = chatClient
                 //.prompt(message)      // Use this option for legacy code.
                 .prompt()
                 .user(u -> u.text("I am visiting {city}. What are the top 3 destination places?")
                         .param("city", cityName))
                 .call()
-                .content();
+                .entity(TopDestinationsResponse.class);
 
         Assert.notNull(response, "Null response");
-        log.info(response);
+        log.info(response.toString());
         return response;
     }
 
