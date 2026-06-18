@@ -61,7 +61,7 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [Install docker using instructions](https://docs.docker.com/engine/install/ubuntu/)
 - [Run ollama using docker](https://github.com/mythrantic/ollama-docker)
   - cd ollama-docker
-  - docker compose up -d
+  - sudo docker compose -f ./docker-compose.yml up -d
 - [Verify](http://localhost:8080)
 - [Ollama Models](https://ollama.com/library)
 
