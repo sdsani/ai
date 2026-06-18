@@ -10,9 +10,7 @@ import org.springframework.util.Assert;
 public class HelloSpringAI {
 
     private static final String SYSTEM_PROMPT = """
-                            You are system engineer. Working on upgrading a Spring boot application.
-                            Spring cloud AWS is one of the framework part of your application.
-                            You want to find the latest Spring Cloud AWS version available out there.""";
+                            You are a friendly travel agent. answer in a concise, professional tone.""";
 
     private final ChatClient chatClient;
 
@@ -24,12 +22,15 @@ public class HelloSpringAI {
         log.info("Chat client has been built {}", "HelloSpringAI");
     }
 
-    public String chat(String chatId, String message) {
+    public String chat(String chatId, String cityName) {
 
-        log.info("==> HelloSpringAI.chat service call. chatId: {}, message: {}", chatId, message);
+        log.info("==> HelloSpringAI.chat service call. chatId: {}, cityName: {}", chatId, cityName);
 
         String response = chatClient
-                .prompt(message)
+                //.prompt(message)      // Use this option for legacy code.
+                .prompt()
+                .user(u -> u.text("I am visiting {city}. What are the top 3 destination places?")
+                        .param("city", cityName))
                 .call()
                 .content();
 

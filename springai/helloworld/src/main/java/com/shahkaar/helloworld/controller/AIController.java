@@ -22,6 +22,6 @@ public class AIController {
     public String helloSpring() {
 
         log.info("====> Calling ai/tools");
-        return helloSpringAI.chat("1234", "Tell me a joke.");
+        return helloSpringAI.chat("1234", "Lahore");
     }
 }

@@ -6,6 +6,11 @@ A simple hello world program to get started with Spring AI and learn how to inte
 
 This repository contains a basic Spring AI application demonstrating simple interaction with an LLM using Spring's ChatClient. It serves as a foundational project while learning Spring AI concepts through various articles and tutorials.
 
+### Key Features
+- Basic Spring AI configuration (Check application.yaml)
+- System messages vs user messages (HelloSpringAI.java, AIController.java)
+- Dynamic prompt construction (HelloSpringAI.java)
+
 ## Purpose
 
 This project explores:
@@ -20,5 +25,5 @@ This is a work-in-progress learning project for mastering Spring AI fundamentals
 ## Links
 
 - [Bride the gap between Java and AI](https://mohankumarsagadevan.medium.com/spring-ai-101-bridging-the-gap-between-java-and-generative-ai-f920af1473a1)
-- [Hello World with Spring AI](https://mohankumarsagadevan.medium.com/spring-ai-hello-world-1c8e5b9a7c8e)
+- [Hello World with Spring AI](https://mohankumarsagadevan.medium.com/spring-ai-101-hello-world-with-chatclient-mastering-the-fluent-api-and-prompts-97beda2cbdd7)
 
