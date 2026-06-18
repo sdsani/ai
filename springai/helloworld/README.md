@@ -22,6 +22,26 @@ This project explores:
 
 This is a work-in-progress learning project for mastering Spring AI fundamentals.
 
+## How to Save cost on LLM
+To save cost on LLM interactions, you can:
+
+```
+Instead of using 
+implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+
+use implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
+
+and run it locally.
+```
+
+## Fluent API
+
+In Spring AI, chatClient.prompt(messageString) is a shorthand convenience method for simple, single-turn interactions, defaulting the payload as a user message.   
+In contrast, chatClient.prompt().user(...) is part of the Spring AI Chat Client fluent API, letting you chain system prompts,   
+advisors, and parameters for complex, multi-turn AI workflows.  
+
+- [Fluent API Deep Dive](https://dev.to/nk_sk_6f24fdd730188b284bf/understanding-fluent-api-in-spring-a-deep-dive-51lh)
+
 ## Links
 
 - [Bride the gap between Java and AI](https://mohankumarsagadevan.medium.com/spring-ai-101-bridging-the-gap-between-java-and-generative-ai-f920af1473a1)
