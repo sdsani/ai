@@ -19,7 +19,7 @@ public class AIController {
 
     private final HelloSpringAI helloSpringAI;
 
-    // http://localhost:8080/ai/helloworld
+    // http://localhost:8081/ai/helloworld
     @GetMapping("/helloworld")
     public TopDestinationsResponse helloSpring() {
 
@@ -27,7 +27,7 @@ public class AIController {
         return helloSpringAI.chat("1234", "Lahore");
     }
 
-    // http://localhost:8080/ai/asynchelloworld
+    // http://localhost:8081/ai/asynchelloworld
     // Stream does not support transformation into a custom object. It can only return the content as string.
     @GetMapping("/asynchelloworld")
     public Flux<String> asyncHelloSpring() {
