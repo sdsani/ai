@@ -42,8 +42,10 @@ advisors, and parameters for complex, multi-turn AI workflows.
 
 ## Pay Attention to following in the HelloSpringAI.java
 
-- .user( dynamicPrompt )
+- MavenMetaDataTool
+- SpringCloudAWSVersionFinderService
 
 ## Links
 
 - [Empowering AI with Tools](https://mohankumarsagadevan.medium.com/spring-ai-101-empowering-ai-with-tools-the-tool-annotation-and-function-calling-aa4f9fe64d50)
+- [Spring AI tool calling](https://docs.spring.io/spring-ai/reference/api/tools.html)
