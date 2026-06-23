@@ -12,7 +12,7 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Mastering the Fluent API and Prompts | https://mohankumarsagadevan.medium.com/spring-ai-101-hello-world-with-chatclient-mastering-the-fluent-api-and-prompts-97beda2cbdd7 | ./hellowolrd |
 | Structured Output Mapping to Java Records | https://mohankumarsagadevan.medium.com/spring-ai-101-beyond-plain-text-structured-output-mapping-to-java-records-ef26e9f08150 | ./helloworld |
 | Empwering AI with @Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-empowering-ai-with-tools-the-tool-annotation-and-function-calling-aa4f9fe64d50 | ./springai-tools |  
-| Unlocking the Model Context Protocol (MCP) — Standardizing AI Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273 | ./XXXX |
+| Unlocking the Model Context Protocol (MCP) — Standardizing AI Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273 | ./springai-mcp |
 
 
 The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory: https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5
