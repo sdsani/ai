@@ -1,7 +1,7 @@
-package com.shahkaar.helloworld.controller;
+package com.shahkaar.springai_tools.controller;
 
 import com.shahkaar.helloworld.model.dto.TopDestinationsResponse;
-import com.shahkaar.helloworld.service.HelloSpringAIService;
+import com.shahkaar.helloworld.service.HelloSpringAI;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,14 +17,14 @@ import reactor.core.publisher.Flux;
 @CrossOrigin
 public class AIController {
 
-    private final HelloSpringAIService helloSpringAIService;
+    private final HelloSpringAI helloSpringAI;
 
     // http://localhost:8081/ai/helloworld
     @GetMapping("/helloworld")
     public TopDestinationsResponse helloSpring() {
 
         log.info("====> Calling helloSpringAI.chat");
-        return helloSpringAIService.chat("1234", "Lahore");
+        return helloSpringAI.chat("1234", "Lahore");
     }
 
     // http://localhost:8081/ai/asynchelloworld
@@ -32,6 +32,6 @@ public class AIController {
     @GetMapping("/asynchelloworld")
     public Flux<String> asyncHelloSpring() {
         log.info("====> Calling helloSpringAI.aSyncChat");
-        return helloSpringAIService.aSyncChat("1234", "Lahore");
+        return helloSpringAI.aSyncChat("1234", "Lahore");
     }
 }

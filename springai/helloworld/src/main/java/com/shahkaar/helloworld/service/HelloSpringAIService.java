@@ -9,14 +9,14 @@ import reactor.core.publisher.Flux;
 
 @Service
 @Slf4j
-public class HelloSpringAI {
+public class HelloSpringAIService {
 
     private static final String SYSTEM_PROMPT = """
                             You are a friendly travel agent. answer in a concise, professional tone.""";
 
     private final ChatClient chatClient;
 
-    HelloSpringAI(ChatClient.Builder builder) {
+    HelloSpringAIService(ChatClient.Builder builder) {
 
         chatClient = builder
                 .defaultSystem( SYSTEM_PROMPT )
