@@ -6,4 +6,7 @@ import java.util.List;
 
 @Builder
 public record EventResponseDTO(List<EventDTO> events) {
+    public List<EventDTO> getEvents() {
+        return events;
+    }
 }

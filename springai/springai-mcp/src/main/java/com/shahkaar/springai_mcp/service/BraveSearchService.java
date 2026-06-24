@@ -27,7 +27,7 @@ public class BraveSearchService {
                        List<McpSyncClient> mcpSyncClients) {
 
         chatClient = builder
-                //.defaultSystem( SYSTEM_PROMPT )
+                .defaultSystem( SYSTEM_PROMPT )
                 .defaultTools(SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build())
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(MessageWindowChatMemory.builder().build()).build())
                 .build();
@@ -36,25 +36,25 @@ public class BraveSearchService {
         log.info("Chat client has been built {}", "BraveSearchService");
     }
 
-    public EventResponseDTO chat(String chatId) {
+    public EventResponseDTO chat(String chatId, String prompt) {
 
-        String query = """
-                        Use the Brave Search tool to search patch.com for events in Eagan, Minnesota
-                        during July 2026.
-                        
-                        Return:
-                        - Event name
-                        - Date
-                        - Source URL
-                        - Title
-                        - Extra Snippet
-                        """;
+//        String query = """
+//                        Use the Brave Search tool to search patch.com for events in Eagan, Minnesota
+//                        during July 2026.
+//
+//                        Return:
+//                        - Event name
+//                        - Date
+//                        - Source URL
+//                        - Title
+//                        - Extra Snippet
+//                        """;
 
-        log.info("==> BraveSearchService.chat service call. chatID: {}", chatId);
+        log.info("==> BraveSearchService.chat service call. chatID: {}, prompt: {}", chatId, prompt);
 
         // Setting tools under .tools() will make the tool available for this specific prompt.
         EventResponseDTO response = chatClient
-                .prompt(query)
+                .prompt(prompt)
                 //.tools(SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build())  // Added to the tools
                 .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .call()
@@ -62,6 +62,7 @@ public class BraveSearchService {
 
         Assert.notNull(response, "Response is null");
         log.info(response.toString());
+        log.info("Events count: {}", response.getEvents().size());
         return response;
     }
 
