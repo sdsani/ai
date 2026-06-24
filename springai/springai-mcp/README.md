@@ -54,3 +54,6 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [Connect Your AI to Everything: Spring AI's MCP Boot Starters](https://spring.io/blog/2025/09/16/spring-ai-mcp-intro-blog)
 - [Tavily MCP Server](https://docs.tavily.com/documentation/mcp)
 - [How LLM use Tools](https://www.linkedin.com/posts/luongnv89_mcp-model-context-protocol-sequence-diagram-share-7303100651759169538-dA8a/)
+- [The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory](https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5)
+- [Advisor API](https://docs.spring.io/spring-ai/reference/api/advisors.html)
+- [Spring AI GitHub examples](https://github.com/spring-projects/spring-ai-examples)
