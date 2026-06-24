@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: springai-mcp
+
+  ai:
+    #    ollama:
+    #      base-url: http://localhost:7869
+    #      chat:
+    #        options:
+    #          model: Qwen3
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          temperature: 0.7
+          #model: gpt-5
+          model: gpt-4.1-nano
+    mcp:
+      client:
+        stdio:
+          connections:
+            brave-search:
+              env:
+                BRAVE_API_KEY: ${BRAVE_API_KEY}
+              command: npx  # This would require installation of NPX/NPM/NODE on the host machine where this program is running
+              args: -y,@modelcontextprotocol/server-brave-search
+
+# Following does not work.
+#    mcp:
+#      client:
+#        streamable-http:
+#          connections:
+#            brave-search:
+#              url: https://api.brave.com
+#              endpoint: /mcp
+#              headers:
+#                BRAVE_API_KEY: ${BRAVE_API_KEY}
+
+server:
+  port: 8081
