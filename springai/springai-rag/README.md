@@ -1,6 +1,7 @@
 # Spring AI RAG
 
-A simple  program to demonstrate use of RAG with SpringAI.
+A simple  program to demonstrate use of RAG with SpringAI.  
+Spring AI provides out-of-the-box support for common RAG flows using the Advisor API.
 
 ## Overview
 
