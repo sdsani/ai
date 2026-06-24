@@ -6,7 +6,8 @@ Spring AI provides out-of-the-box support for common RAG flows using the Advisor
 ## Overview
 
 This repository contains a basic Spring AI application demonstrating simple interaction with an LLM using Spring's ChatClient.  
-It serves as a foundational project while learning Spring AI concepts through various articles and tutorials.
+It serves as a foundational project while learning Spring AI concepts through various articles and tutorials.  
+RAG is a technique where we retrieve relevant data from our own database and “augment” the prompt with that data before sending it to the AI.  
 
 ### Key Features
 - Basic Spring AI configuration (Check application.yaml)
