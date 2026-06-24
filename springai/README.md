@@ -13,12 +13,13 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Structured Output Mapping to Java Records | https://mohankumarsagadevan.medium.com/spring-ai-101-beyond-plain-text-structured-output-mapping-to-java-records-ef26e9f08150 | ./helloworld |
 | Empwering AI with @Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-empowering-ai-with-tools-the-tool-annotation-and-function-calling-aa4f9fe64d50 | ./springai-tools |  
 | Unlocking the Model Context Protocol (MCP) — Standardizing AI Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273 | ./springai-mcp |
+| The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory | https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5 | ./springai-mcp |
+| Demystifying RAG — Embeddings, Vector Databases, and the ETL Pipeline | https://mohankumarsagadevan.medium.com/spring-ai-101-demystifying-rag-embeddings-vector-databases-and-the-etl-pipeline-8f27ff0f88af | ./?????? |
 
 
-The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory: https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5
 
 
-Demystifying RAG — Embeddings, Vector Databases, and the ETL Pipeline: https://mohankumarsagadevan.medium.com/spring-ai-101-demystifying-rag-embeddings-vector-databases-and-the-etl-pipeline-8f27ff0f88af
+
 
 Building a RAG Pipeline — The QuestionAnswerAdvisor: https://mohankumarsagadevan.medium.com/spring-ai-101-building-a-rag-pipeline-the-questionansweradvisor-6950abe32f05
 

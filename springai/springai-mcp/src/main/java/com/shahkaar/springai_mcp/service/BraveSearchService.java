@@ -1,10 +1,12 @@
 package com.shahkaar.springai_mcp.service;
 
+import com.shahkaar.springai_mcp.advisors.HelloAdvisor;
 import com.shahkaar.springai_mcp.model.dto.EventResponseDTO;
 import io.modelcontextprotocol.client.McpSyncClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
@@ -26,10 +28,18 @@ public class BraveSearchService {
     BraveSearchService(ChatClient.Builder builder,
                        List<McpSyncClient> mcpSyncClients) {
 
+        MessageChatMemoryAdvisor messageChatMemoryAdvisor = MessageChatMemoryAdvisor
+                                                .builder(MessageWindowChatMemory.builder()
+                                                        .build())
+                                                .order(0)
+                                                .build();
+
+        // Although simple logging adviser is first in the list below, however,
+        // Still it should trigger after HellowAdvisor since HellowAdvisor is set with order or 1.
         chatClient = builder
                 .defaultSystem( SYSTEM_PROMPT )
                 .defaultTools(SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build())
-                .defaultAdvisors(MessageChatMemoryAdvisor.builder(MessageWindowChatMemory.builder().build()).build())
+                .defaultAdvisors(new SimpleLoggerAdvisor(2), messageChatMemoryAdvisor, new HelloAdvisor())
                 .build();
 
         log.info("MCP clients count: {}", mcpSyncClients.size());

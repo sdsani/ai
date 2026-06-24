@@ -38,3 +38,28 @@ spring:
 
 server:
   port: 8081
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0 # Set to 1.0 for local debugging
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, info
+  metrics:
+    distribution:
+      percentiles-histogram:
+        gen.ai.client.token.usage: true
+        spring.ai.chat.client: true
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor:
+                SimpleLoggerAdvisor: DEBUG
