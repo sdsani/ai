@@ -35,7 +35,9 @@ public class RagIngestionConfig {
         var splitter = TokenTextSplitter.builder().build();
         vectorStore.accept(
                 splitter.apply(
-                        reader.get()));
+                        reader.get()
+                        )
+                );
         log.info("Document loading complete.");
     }
 }

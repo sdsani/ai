@@ -15,15 +15,8 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Unlocking the Model Context Protocol (MCP) — Standardizing AI Tools | https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273 | ./springai-mcp |
 | The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory | https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5 | ./springai-mcp |
 | Demystifying RAG — Embeddings, Vector Databases, and the ETL Pipeline | https://mohankumarsagadevan.medium.com/spring-ai-101-demystifying-rag-embeddings-vector-databases-and-the-etl-pipeline-8f27ff0f88af | ./springai-rag |
-
-
-
-
-
-
-Building a RAG Pipeline — The QuestionAnswerAdvisor: https://mohankumarsagadevan.medium.com/spring-ai-101-building-a-rag-pipeline-the-questionansweradvisor-6950abe32f05
-
-Evaluating AI Responses — Ensuring Accuracy and Relevancy: https://mohankumarsagadevan.medium.com/spring-ai-101-evaluating-ai-responses-ensuring-accuracy-and-relevancy-769ad95cf865
+| Building a RAG Pipeline — The QuestionAnswerAdvisor | https://mohankumarsagadevan.medium.com/spring-ai-101-building-a-rag-pipeline-the-questionansweradvisor-6950abe32f05 | ./springai-rag |
+| Evaluating AI Responses — Ensuring Accuracy and Relevancy | https://mohankumarsagadevan.medium.com/spring-ai-101-evaluating-ai-responses-ensuring-accuracy-and-relevancy-769ad95cf865 | ./?????? |
 
 ## How to Save Cost (Running OLLAMA locally)
 
