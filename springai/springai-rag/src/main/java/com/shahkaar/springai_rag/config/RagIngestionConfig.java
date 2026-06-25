@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-// https://thetalkingapp.medium.com/spring-ai-recipe-essential-rag-c1798773668b
 @Configuration
 @Slf4j
 public class RagIngestionConfig {

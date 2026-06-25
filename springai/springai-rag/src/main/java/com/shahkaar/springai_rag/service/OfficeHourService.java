@@ -5,8 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -19,7 +21,7 @@ public class OfficeHourService {
     private static final String SYSTEM_PROMPT = """
             "You are useful assistant and can provide office hours for different companies when company name is provided""";
 
-    OfficeHourService(ChatClient.Builder builder) {
+    OfficeHourService(ChatClient.Builder builder, VectorStore vectorStore) {
 
         MessageChatMemoryAdvisor messageChatMemoryAdvisor = MessageChatMemoryAdvisor
                 .builder(MessageWindowChatMemory.builder()
@@ -31,7 +33,9 @@ public class OfficeHourService {
         // Still it should trigger after HellowAdvisor since HellowAdvisor is set with order or 1.
         chatClient = builder
                 .defaultSystem( SYSTEM_PROMPT )
-                .defaultAdvisors(new SimpleLoggerAdvisor(2), messageChatMemoryAdvisor)
+                .defaultAdvisors(new SimpleLoggerAdvisor(2),
+                                        messageChatMemoryAdvisor,
+                                        QuestionAnswerAdvisor.builder(vectorStore).build())
                 .build();
 
         log.info("Chat client has been built {}", "OfficeHourService");

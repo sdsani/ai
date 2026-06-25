@@ -51,3 +51,4 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [Spring AI GitHub examples](https://github.com/spring-projects/spring-ai-examples)
 - [Spring AI RAG Docs](https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html)
 - [Spring AI RAG](https://github.com/microsoft/Spring-AI-for-Beginners/blob/main/03-rag/README.md)
+- [Basic Rag Example](https://thetalkingapp.medium.com/spring-ai-recipe-essential-rag-c1798773668b)
