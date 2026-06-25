@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         responseArea.textContent = "Loading...";
 
         try {
-            const response = await fetch("/ai/bravesearch", {
+            const response = await fetch("/ai/office-hours", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
