@@ -1,6 +1,6 @@
 package com.shahkaar.springai_rag.service;
 
-import com.shahkaar.springai_rag.model.dto.CompanyOfficeHours;
+import com.shahkaar.springai_rag.model.dto.CompanyOfficeHoursDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -37,15 +37,15 @@ public class OfficeHourService {
         log.info("Chat client has been built {}", "OfficeHourService");
     }
 
-    public CompanyOfficeHours chat(String chatId, String prompt) {
+    public CompanyOfficeHoursDTO chat(String chatId, String prompt) {
         log.info("==> BraveSearchService.chat service call. chatID: {}, prompt: {}", chatId, prompt);
 
         // Setting tools under .tools() will make the tool available for this specific prompt.
-        CompanyOfficeHours response = chatClient
+        CompanyOfficeHoursDTO response = chatClient
                 .prompt(prompt)
                 .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .call()
-                .entity(CompanyOfficeHours.class);      // Asking to transform response into a Java object
+                .entity(CompanyOfficeHoursDTO.class);      // Asking to transform response into a Java object
 
         Assert.notNull(response, "Response is null");
         log.info(response.toString());
