@@ -3,10 +3,7 @@ package com.shahkaar.assitant_agent.controller;
 import com.shahkaar.assitant_agent.service.RAGSearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.document.Document;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/ai")
@@ -19,7 +16,7 @@ public class RAGSearchController {
 
     // http://localhost:8081/ai/searchrag
     @GetMapping("/searchrag")
-    public List<Document> ragSearch() {
+    public String ragSearch() {
 
         // Following queries work
         //String query = "AWS S3 Basics";

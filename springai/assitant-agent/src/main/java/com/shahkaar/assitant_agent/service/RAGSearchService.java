@@ -8,6 +8,7 @@ import org.springframework.ai.vectorstore.VectorStoreRetriever;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -16,7 +17,7 @@ public class RAGSearchService {
 
     private final VectorStoreRetriever retriever;
 
-    public List<Document> searchDocuments(String question) {
+    public String searchDocuments(String question) {
 
         SearchRequest request = SearchRequest.builder().
                 query(question).
@@ -24,6 +25,9 @@ public class RAGSearchService {
                 similarityThreshold(0.7).
                 build();
 
-        return retriever.similaritySearch(request);
+        List<Document> relevantDocs = retriever.similaritySearch(request);
+        return relevantDocs.stream().map(Document::getText).
+                    collect(Collectors.joining("\n\n"));
+        //return retriever.similaritySearch(request);
     }
 }
