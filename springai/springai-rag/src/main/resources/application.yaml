@@ -49,4 +49,4 @@ logging:
           chat:
             client:
               advisor:
-                SimpleLoggerAdvisor: ERROR
+                SimpleLoggerAdvisor: DEBUG
