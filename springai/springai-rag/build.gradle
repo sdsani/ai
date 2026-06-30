@@ -27,6 +27,7 @@ dependencies {
 	implementation 'org.springframework.ai:spring-ai-vector-store-advisor'
 	implementation "org.springframework.ai:spring-ai-vector-store"
 	implementation 'org.springframework.ai:spring-ai-tika-document-reader'
+	implementation 'org.zalando:logbook-spring-boot-starter:4.0.4'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

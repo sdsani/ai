@@ -18,6 +18,9 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Building a RAG Pipeline — The QuestionAnswerAdvisor | https://mohankumarsagadevan.medium.com/spring-ai-101-building-a-rag-pipeline-the-questionansweradvisor-6950abe32f05 | ./springai-rag |
 | Evaluating AI Responses — Ensuring Accuracy and Relevancy | https://mohankumarsagadevan.medium.com/spring-ai-101-evaluating-ai-responses-ensuring-accuracy-and-relevancy-769ad95cf865 | ./?????? |
 
+AIAssistant with SpringAI: https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8
+
+
 ## How to Save Cost (Running OLLAMA locally)
 
 - [Install docker using instructions](https://docs.docker.com/engine/install/ubuntu/)

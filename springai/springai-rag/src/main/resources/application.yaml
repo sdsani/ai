@@ -7,6 +7,11 @@ spring:
     #      chat:
     #        options:
     #          model: Qwen3
+    chat:
+      client:
+        observations:
+          log-prompt: true
+          log-completion: true
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:
@@ -36,9 +41,12 @@ management:
 logging:
   level:
     org:
+      zalando: TRACE
       springframework:
         ai:
+#          advisor:
+#            SimpleLoggerAdvisor: DEBUG
           chat:
             client:
               advisor:
-                SimpleLoggerAdvisor: DEBUG
+                SimpleLoggerAdvisor: ERROR

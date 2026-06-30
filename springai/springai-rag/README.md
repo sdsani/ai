@@ -44,6 +44,23 @@ advisors, and parameters for complex, multi-turn AI workflows.
 
 ## Pay Attention to following in the HelloSpringAI.java
 
+## Logging
+
+```
+Simple loggerAdvisor while building chat client.
+Next turn on logging
+logging.level.org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor=INFO
+
+
+Native Observability and Tracing option
+spring.ai.chat.client.observations.log-prompt=true
+spring.ai.chat.client.observations.log-completion=true
+
+Above only logs request and response
+
+For full visibility, use following option
+
+```
 
 ## Links
 
@@ -52,3 +69,4 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [Spring AI RAG Docs](https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html)
 - [Spring AI RAG](https://github.com/microsoft/Spring-AI-for-Beginners/blob/main/03-rag/README.md)
 - [Basic Rag Example](https://thetalkingapp.medium.com/spring-ai-recipe-essential-rag-c1798773668b)
+- [Logback for full visibility](https://thetalkingapp.medium.com/spring-ai-recipe-logging-llm-requests-and-responses-c1adfba50082)
