@@ -6,9 +6,13 @@ A simple program to demonstrate a DevOps agent
 
 DevOps agent capable of assist and perform tasks
 
-### Key Features
-- 
-- RAG in action
+## Feature Building
+
+### RAG and Command Generation
+
+- Pre-trained knowledge: /src/main/resources/documents
+- Ingestion: RagIngestionConfig.java 
+
 
 ## How to Save cost on LLM
 To save cost on LLM interactions, you can:
