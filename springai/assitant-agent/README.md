@@ -6,12 +6,13 @@ A simple program to demonstrate a DevOps agent
 
 DevOps agent capable of assist and perform tasks
 
-## Feature Building
+## Building Journey
 
 ### RAG and Command Generation
 
 - Pre-trained knowledge: /src/main/resources/documents
 - Ingestion: RagIngestionConfig.java 
+- Search: RAGSearchService.java, RAGSearchController.java
 
 
 ## How to Save cost on LLM
