@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    function getSessionId() {
+        let sessionId = sessionStorage.getItem("sessionId");
+
+        if (!sessionId) {
+            sessionId = crypto.randomUUID();
+            sessionStorage.setItem("sessionId", sessionId);
+        }
+        return sessionId;
+    }
+
     const submitBtn = document.getElementById("submitBtn");
     const promptInput = document.getElementById("promptInput");
     const responseArea = document.getElementById("responseArea");
@@ -8,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         responseArea.textContent = "Loading...";
 
+        const sessionId = getSessionId();
+        console.log("Session ID:", sessionId);
+
         try {
             const response = await fetch("/ai/devopsgpt", {
                 method: "POST",
@@ -15,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    prompt: promptInput.value
+                    prompt: promptInput.value,
+                    sessionId: sessionId
                 })
             });
 
