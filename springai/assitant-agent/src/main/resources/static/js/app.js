@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         responseArea.textContent = "Loading...";
 
         try {
-            const response = await fetch("/ai/office-hours", {
+            const response = await fetch("/ai/devopsgpt", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
