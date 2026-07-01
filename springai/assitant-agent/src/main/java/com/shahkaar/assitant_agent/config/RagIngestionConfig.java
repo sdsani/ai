@@ -31,7 +31,6 @@ public class RagIngestionConfig {
             for (Resource resource: documentResources) {
                 loadResource(vectorStore, resource);
             }
-
             log.info("Documents ingestion complete.");
         };
     }

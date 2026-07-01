@@ -13,6 +13,7 @@ DevOps agent capable of assist and perform tasks
 - Pre-trained knowledge: /src/main/resources/documents
 - Ingestion: RagIngestionConfig.java 
 - Search: RAGSearchService.java, RAGSearchController.java
+- ChatService.java: Chat service to take user input and augment it with RAG search results to generate a command
 
 
 ## How to Save cost on LLM
@@ -38,3 +39,5 @@ advisors, and parameters for complex, multi-turn AI workflows.
 ## Links
 
 - [Actual Article](https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8)
+- [RAG Ingestion and Search](https://docs.spring.io/spring-ai/reference/api/vectordbs.html)
+- [How to perform Vector Searching Using Vector Store](https://www.reddit.com/r/SpringAIDev/comments/1tlf08o/spring_ai_how_to_perform_vector_search_using/)

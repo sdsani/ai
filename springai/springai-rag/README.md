@@ -70,3 +70,4 @@ For full visibility, use following option
 - [Spring AI RAG](https://github.com/microsoft/Spring-AI-for-Beginners/blob/main/03-rag/README.md)
 - [Basic Rag Example](https://thetalkingapp.medium.com/spring-ai-recipe-essential-rag-c1798773668b)
 - [Logback for full visibility](https://thetalkingapp.medium.com/spring-ai-recipe-logging-llm-requests-and-responses-c1adfba50082)
+- [How to perform Vector Searching Using Vector Store](https://www.reddit.com/r/SpringAIDev/comments/1tlf08o/spring_ai_how_to_perform_vector_search_using/)

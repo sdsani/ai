@@ -17,7 +17,7 @@ public class RAGSearchService {
 
     private final VectorStoreRetriever retriever;
 
-    public String searchDocuments(String question) {
+    public List<Document> searchRelevantDocuments(String question) {
 
         SearchRequest request = SearchRequest.builder().
                 query(question).
@@ -25,9 +25,19 @@ public class RAGSearchService {
                 similarityThreshold(0.7).
                 build();
 
-        List<Document> relevantDocs = retriever.similaritySearch(request);
+        return retriever.similaritySearch(request);
+    }
+
+    public String searchRelevantDocumentsAsString(String question) {
+
+        List<Document> relevantDocs = searchRelevantDocuments(question);
+
+        log.info("RAG search returned {} relevant documents.", relevantDocs.size());
+        for (Document doc:relevantDocs) {
+            log.info("Document id: {}, Name: {}", doc.getId(), doc.getMetadata().get("source"));
+        }
+
         return relevantDocs.stream().map(Document::getText).
-                    collect(Collectors.joining("\n\n"));
-        //return retriever.similaritySearch(request);
+                collect(Collectors.joining("\n\n"));
     }
 }
