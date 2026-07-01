@@ -3,6 +3,7 @@ package com.shahkaar.assitant_agent.service;
 import com.shahkaar.assitant_agent.model.dto.ChatResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,8 @@ public class ChatService {
                             RAGSearchService ragSearchService) {
 
         this.chatClient = chatClientBuilder.
-                            build();
+                defaultAdvisors(new SimpleLoggerAdvisor(2)).
+                build();
         //this.vectorStore = vectorStore;
         this.ragSearchService = ragSearchService;
     }

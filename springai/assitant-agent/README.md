@@ -40,3 +40,4 @@ advisors, and parameters for complex, multi-turn AI workflows.
 
 - [Actual Article](https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8)
 - [RAG Ingestion and Search](https://docs.spring.io/spring-ai/reference/api/vectordbs.html)
+- [How to perform Vector Searching Using Vector Store](https://www.reddit.com/r/SpringAIDev/comments/1tlf08o/spring_ai_how_to_perform_vector_search_using/)
