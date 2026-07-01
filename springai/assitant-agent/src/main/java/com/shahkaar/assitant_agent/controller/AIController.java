@@ -1,7 +1,7 @@
 package com.shahkaar.assitant_agent.controller;
 
 import com.shahkaar.assitant_agent.model.dto.ChatRequest;
-import com.shahkaar.assitant_agent.model.dto.ChatResponse;
+import com.shahkaar.assitant_agent.model.dto.CommandResponse;
 import com.shahkaar.assitant_agent.service.ChatService;
 import com.shahkaar.assitant_agent.service.RAGSearchService;
 import jakarta.validation.Valid;
@@ -42,10 +42,10 @@ public class AIController {
 
     // http://localhost:8081/ai/devopsgpt
     @PostMapping("/devopsgpt")
-    public ChatResponse devOpsGPT(@Valid @RequestBody ChatRequest chatRequest) {
+    public CommandResponse devOpsGPT(@Valid @RequestBody ChatRequest chatRequest) {
 
         log.info("====> Calling ai/devopsgpt, ChatRequest: {}, {}", chatRequest, chatRequest.getClass().getName());
-        return ChatResponse.builder().response(chatService.getRagReply(chatRequest.prompt())).build();
+        return chatService.getRagReply(chatRequest.prompt());
     }
 
 }

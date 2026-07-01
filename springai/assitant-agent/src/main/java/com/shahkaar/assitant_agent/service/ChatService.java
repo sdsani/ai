@@ -1,6 +1,6 @@
 package com.shahkaar.assitant_agent.service;
 
-import com.shahkaar.assitant_agent.model.dto.ChatResponse;
+import com.shahkaar.assitant_agent.model.dto.CommandResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -42,7 +42,7 @@ public class ChatService {
         this.ragSearchService = ragSearchService;
     }
 
-    public String getRagReply(String userMessage) {
+    public CommandResponse getRagReply(String userMessage) {
 
         log.info("Received RAG user message: '{}'", userMessage);
 
@@ -57,12 +57,10 @@ public class ChatService {
         ));
 
         // 3. Send the enhanced prompt to the LLM
-        ChatResponse response = chatClient.
+        return chatClient.
                         prompt(prompt).
-                        call().entity(ChatResponse.class);
+                        call().entity(CommandResponse.class);
 
-        assert response != null : "Response is null";
-        return response.response();
     }
 
 }
