@@ -17,8 +17,7 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Demystifying RAG — Embeddings, Vector Databases, and the ETL Pipeline | https://mohankumarsagadevan.medium.com/spring-ai-101-demystifying-rag-embeddings-vector-databases-and-the-etl-pipeline-8f27ff0f88af | ./springai-rag |
 | Building a RAG Pipeline — The QuestionAnswerAdvisor | https://mohankumarsagadevan.medium.com/spring-ai-101-building-a-rag-pipeline-the-questionansweradvisor-6950abe32f05 | ./springai-rag |
 | Evaluating AI Responses — Ensuring Accuracy and Relevancy | https://mohankumarsagadevan.medium.com/spring-ai-101-evaluating-ai-responses-ensuring-accuracy-and-relevancy-769ad95cf865 | TODO |
-
-AIAssistant with SpringAI: https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8
+| AIAssistant with SpringAI | https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8 | ./assistant-agent |
 
 ## Spring AI Recipies
 
