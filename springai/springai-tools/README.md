@@ -48,7 +48,13 @@ advisors, and parameters for complex, multi-turn AI workflows.
 ## Enhancements
 
 - Enhanced the project using "Cleaner approach" below.
-  - Refactored code to use ChatClientBuilderCustomizer 
+  - Refactored code to use ChatClientBuilderCustomizer (AIConfig.java a new class) 
+  - Benefits
+    - Separation of concerns
+    - Composability
+    - Improved readability
+    - Easier extension and reuse
+    - Enabled conditional configuration
 
 ## Links
 
