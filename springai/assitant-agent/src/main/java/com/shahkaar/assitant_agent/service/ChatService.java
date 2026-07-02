@@ -59,7 +59,8 @@ public class ChatService {
         // 3. Send the enhanced prompt to the LLM
         return chatClient.
                         prompt(prompt).
-                        call().entity(CommandResponse.class);
+                        call().
+                        entity(CommandResponse.class);
 
     }
 

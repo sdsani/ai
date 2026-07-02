@@ -21,8 +21,13 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 
 ## Spring AI Recipies
 
-Main Page: https://github.com/habuma/spring-ai-recipes  
-
+| Description                                                    | Link                                                                                                              | Code Base   |
+|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
+| Recipies Main Page | https://thetalkingapp.medium.com/ | N/A |
+| Recipies GitHubPage | https://github.com/habuma/spring-ai-recipes  | N/A |
+| Agent Skill VS MCP | https://thetalkingapp.medium.com/agent-skills-vs-mcp-12aad7f48476 | N/A |
+| Test based Chat Loop | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-text-based-chat-loop-around-chatclient-444573e4106c | ???? |
+            
 
 ## How to Save Cost (Running OLLAMA locally)
 
