@@ -1,6 +1,8 @@
 package com.shahkaar.text_based_chat_loop.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springaicommunity.agent.tools.AskUserQuestionTool;
+import org.springaicommunity.agent.utils.CommandLineQuestionHandler;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientBuilderCustomizer;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -20,15 +22,14 @@ public class AIConfig {
     @Bean
     ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
 
-        log.info("Creating ChatClient with SimpleLoggerAdvisor and MessageChatMemoryAdvisor");
+        log.info("Creating ChatClient with SimpleLoggerAdvisor and ChatClientBuilderCustomizer");
         return chatClientBuilder.
-                defaultAdvisors(new SimpleLoggerAdvisor(2)).
                 build();
     }
 
     @Bean
     ApplicationRunner go(ChatClient chatClient) {
-        return args -> {
+        return _ -> {
             System.out.println("How can I help?\n");
             try (Scanner scanner = new Scanner(System.in)) {
 
@@ -47,13 +48,37 @@ public class AIConfig {
     @Bean
     ChatClientBuilderCustomizer chatMemoryCustomizer() {
         return builder -> {
-            log.info("Adding MessageChatMemoryAdvisor with maxMessages=5 to ChatClient");
+            log.info("Adding MessageChatMemoryAdvisor with maxMessages=5 to ChatClientBuilderCustomizer");
             builder.defaultAdvisors(
                     MessageChatMemoryAdvisor.builder(
                                     MessageWindowChatMemory.builder()
                                             .maxMessages(5)
                                             .build())
                             .build());
+        };
+    }
+
+    @Bean
+    ChatClientBuilderCustomizer loggingAdvisor() {
+        return builder -> {
+            log.info("Adding Logging advisor to ChatClientBuilderCustomizer");
+            builder.defaultAdvisors(SimpleLoggerAdvisor.builder().order(2).build())
+                            .build();
+        };
+    }
+
+    // Try asking question: Plan a trip to Disney World
+    // With and witout following tool. It will ask you to provide more details about your trip.
+    @Bean
+    ChatClientBuilderCustomizer addQuestionTool() {
+        return builder -> {
+            log.info("Adding QuestionTool to ChatClientBuilderCustomizer");
+            builder
+                .defaultTools(
+                        AskUserQuestionTool.builder()
+                                .questionHandler(new CommandLineQuestionHandler())
+                                .build()
+                );
         };
     }
 }
