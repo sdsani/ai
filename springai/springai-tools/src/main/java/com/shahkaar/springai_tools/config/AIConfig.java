@@ -42,7 +42,10 @@ public class AIConfig {
 
         return builder -> {
             log.info("Adding Logging Advisor to ChatClientBuilderCustomizer");
-            builder.defaultAdvisors(new SimpleLoggerAdvisor(2))
+            builder.defaultAdvisors(SimpleLoggerAdvisor.
+                                        builder().
+                                        order(2).
+                                        build())
                             .build();
         };
     }
