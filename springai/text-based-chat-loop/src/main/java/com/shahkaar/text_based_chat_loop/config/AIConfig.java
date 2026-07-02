@@ -47,11 +47,11 @@ public class AIConfig {
     @Bean
     ChatClientBuilderCustomizer chatMemoryCustomizer() {
         return builder -> {
-            log.info("Adding MessageChatMemoryAdvisor with maxMessages=500 to ChatClient");
+            log.info("Adding MessageChatMemoryAdvisor with maxMessages=5 to ChatClient");
             builder.defaultAdvisors(
                     MessageChatMemoryAdvisor.builder(
                                     MessageWindowChatMemory.builder()
-                                            .maxMessages(500)
+                                            .maxMessages(5)
                                             .build())
                             .build());
         };

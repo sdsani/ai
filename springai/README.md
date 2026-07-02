@@ -2,6 +2,17 @@
 
 I am learning SpringAI. In this journey, I will read and write examples that will live under the `springai` folder.
 
+## Spring AI Recipies
+
+| Description                                                    | Link                                                                                                              | Code Base   |
+|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
+| Recipies Main Page | https://thetalkingapp.medium.com/ | N/A |
+| Recipies GitHubPage | https://github.com/habuma/spring-ai-recipes  | N/A |
+| Agent Skill VS MCP | https://thetalkingapp.medium.com/agent-skills-vs-mcp-12aad7f48476 | N/A |
+| Test based Chat Loop | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-text-based-chat-loop-around-chatclient-444573e4106c | ./text-based-chat-loop |
+| Composing ChatClient Behavior | https://thetalkingapp.medium.com/spring-ai-recipe-composing-chatclient-behavior-5f643e727781 | Next |
+
+
 ## SpringAI 101 series
 
 Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-101-078cd80f25a7  
@@ -19,14 +30,6 @@ Main page of this series: https://mohankumarsagadevan.medium.com/list/spring-ai-
 | Evaluating AI Responses — Ensuring Accuracy and Relevancy | https://mohankumarsagadevan.medium.com/spring-ai-101-evaluating-ai-responses-ensuring-accuracy-and-relevancy-769ad95cf865 | TODO |
 | AIAssistant with SpringAI | https://medium.com/@kasimoluwasegun/i-built-a-cloud-aware-ai-assistant-with-spring-boot-and-react-heres-the-blueprint-ba7b07e251a8 | ./assistant-agent |
 
-## Spring AI Recipies
-
-| Description                                                    | Link                                                                                                              | Code Base   |
-|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
-| Recipies Main Page | https://thetalkingapp.medium.com/ | N/A |
-| Recipies GitHubPage | https://github.com/habuma/spring-ai-recipes  | N/A |
-| Agent Skill VS MCP | https://thetalkingapp.medium.com/agent-skills-vs-mcp-12aad7f48476 | N/A |
-| Test based Chat Loop | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-text-based-chat-loop-around-chatclient-444573e4106c | ???? |
             
 
 ## How to Save Cost (Running OLLAMA locally)
