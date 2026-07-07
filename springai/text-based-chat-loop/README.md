@@ -2,6 +2,7 @@
 
 ## Links 
 - [Source article](https://thetalkingapp.medium.com/spring-ai-recipe-building-a-text-based-chat-loop-around-chatclient-444573e4106c)
+- [TODO Write demo](https://github.com/spring-ai-community/spring-ai-agent-utils/tree/main/examples/todo-demo)
 
 ## Overview
 
