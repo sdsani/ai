@@ -19,7 +19,9 @@ I am learning SpringAI. In this journey, I will read and write examples that wil
 | Enabling Agent-to-Agent Communication with A2A | https://thetalkingapp.medium.com/spring-ai-recipe-enabling-agent-to-agent-communication-with-a2a-2cdd97794a6f | None |
 | Invoking A2A Sub-Agents with TaskTool | https://thetalkingapp.medium.com/spring-ai-recipe-invoking-a2a-sub-agents-with-tasktool-e4f1a4b92b5f | None |
 | Enabling Long-Term Memory | https://thetalkingapp.medium.com/spring-ai-recipe-enabling-long-term-memory-49186aa60cb0 | None |
-| Creating an STDIO MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-stdio-mcp-server-ccacce8c5349 | NEXT |
+| Creating an STDIO MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-stdio-mcp-server-ccacce8c5349 | NONE |
+| Streamable HTTP MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-streamable-http-mcp-server-e9c70590b872 | NONE |
+| Creating an MCP Client | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-mcp-client-9691ddc42dfd | ./springai-mcp |
 
 
 

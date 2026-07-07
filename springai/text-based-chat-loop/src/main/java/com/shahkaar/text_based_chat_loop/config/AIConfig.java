@@ -24,7 +24,7 @@ public class AIConfig {
     @Bean
     ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
 
-        log.info("Creating ChatClient with SimpleLoggerAdvisor and ChatClientBuilderCustomizer");
+        log.info("Creating ChatClient");
         return chatClientBuilder.
                 build();
     }

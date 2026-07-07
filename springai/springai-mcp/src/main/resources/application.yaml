@@ -18,12 +18,15 @@ spring:
     mcp:
       client:
         stdio:
-          connections:
-            brave-search:
-              env:
-                BRAVE_API_KEY: ${BRAVE_API_KEY}
-              command: npx  # This would require installation of NPX/NPM/NODE on the host machine where this program is running
-              args: -y,@modelcontextprotocol/server-brave-search
+          # Following are two possible ways to configure the MCP client to use the Brave Search server.
+          # When using servers-configuration option, don't place key placeholder in the configuration file, instead use environment variable to pass the key to the program.
+           servers-configuration: "classpath:mcp-servers-config.json"
+#          connections:
+#            brave-search:
+#              env:
+#                BRAVE_API_KEY: ${BRAVE_API_KEY}
+#              command: npx  # This would require installation of NPX/NPM/NODE on the host machine where this program is running
+#              args: -y,@modelcontextprotocol/server-brave-search
 
 # Following does not work.
 #    mcp:

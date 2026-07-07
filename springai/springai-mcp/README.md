@@ -3,6 +3,9 @@
 A simple  program to demonstrate use of mcp with SpringAI.  
 Often described as a “USB-C port for AI applications,”  
 
+An MCP server provides tools that an agent can call as part of its execution loop.  
+If skills represent what an agent knows how to do, then tools represent what an agent is capable of doing.  
+
 ## Overview
 
 This repository contains a basic Spring AI application demonstrating simple interaction with an LLM using Spring's ChatClient.  
@@ -48,7 +51,8 @@ advisors, and parameters for complex, multi-turn AI workflows.
 
 ## Links
 
-- [Unlocking the Model Context Protocol (MCP)](https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273)
+- [Creating an MCP Client](https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-mcp-client-9691ddc42dfd)
+- [Brave MCP Server](https://github.com/brave/brave-search-mcp-server)
 - [Model Context Protocol (MCP)](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
 - [Getting Started with Model Context Protocol (MCP)](https://docs.spring.io/spring-ai/reference/guides/getting-started-mcp.html)
 - [Connect Your AI to Everything: Spring AI's MCP Boot Starters](https://spring.io/blog/2025/09/16/spring-ai-mcp-intro-blog)
@@ -59,3 +63,4 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [Spring AI GitHub examples](https://github.com/spring-projects/spring-ai-examples)
 - [Model Context Protocol Explained in 3 Levels of Difficulty](https://machinelearningmastery.com/model-context-protocol-explained-in-3-levels-of-difficulty/)
 - [MCP Security Best Practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)
+- [Unlocking the Model Context Protocol (@Deprecated)](https://mohankumarsagadevan.medium.com/spring-ai-101-unlocking-the-model-context-protocol-mcp-standardizing-ai-tools-8369e498e273)
