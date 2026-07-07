@@ -57,3 +57,5 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - [The Advisors API — Interceptors, Logging, SafeGuard and Chat Memory](https://mohankumarsagadevan.medium.com/spring-ai-101-the-advisors-api-interceptors-logging-safeguard-and-chat-memory-c5315d3500c5)
 - [Advisor API](https://docs.spring.io/spring-ai/reference/api/advisors.html)
 - [Spring AI GitHub examples](https://github.com/spring-projects/spring-ai-examples)
+- [Model Context Protocol Explained in 3 Levels of Difficulty](https://machinelearningmastery.com/model-context-protocol-explained-in-3-levels-of-difficulty/)
+- [MCP Security Best Practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)

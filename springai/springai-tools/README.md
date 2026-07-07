@@ -45,8 +45,20 @@ advisors, and parameters for complex, multi-turn AI workflows.
 - MavenMetaDataTool
 - SpringCloudAWSVersionFinderService
 
+## Enhancements
+
+- Enhanced the project using "Cleaner approach" below.
+  - Refactored code to use ChatClientBuilderCustomizer (AIConfig.java a new class) 
+  - Benefits
+    - Separation of concerns
+    - Composability
+    - Improved readability
+    - Easier extension and reuse
+    - Enabled conditional configuration
+
 ## Links
 
 - [Empowering AI with Tools](https://mohankumarsagadevan.medium.com/spring-ai-101-empowering-ai-with-tools-the-tool-annotation-and-function-calling-aa4f9fe64d50)
 - [Spring AI tool calling](https://docs.spring.io/spring-ai/reference/api/tools.html)
 - [How LLM use Tools](https://www.linkedin.com/posts/luongnv89_mcp-model-context-protocol-sequence-diagram-share-7303100651759169538-dA8a/)
+- [A Cleaner approach to use tools](https://thetalkingapp.medium.com/spring-ai-recipe-composing-chatclient-behavior-5f643e727781)
