@@ -22,6 +22,7 @@ I am learning SpringAI. In this journey, I will read and write examples that wil
 | Creating an STDIO MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-stdio-mcp-server-ccacce8c5349 | NONE |
 | Streamable HTTP MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-streamable-http-mcp-server-e9c70590b872 | NONE |
 | Creating an MCP Client | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-mcp-client-9691ddc42dfd | ./springai-mcp |
+| Building a Graph-Based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-graph-based-agentic-workflow-becfae64170a | NEXT |
 
 
 

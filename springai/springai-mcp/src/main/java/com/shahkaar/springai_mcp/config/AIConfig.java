@@ -1,18 +1,15 @@
 package com.shahkaar.springai_mcp.config;
 
 import com.shahkaar.springai_mcp.service.BraveSearchService;
-import io.modelcontextprotocol.client.McpSyncClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientBuilderCustomizer;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
-import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 @Configuration
 @Slf4j
@@ -54,6 +51,7 @@ public class AIConfig {
         };
     }
 
+    /*
     @Bean
     ChatClientBuilderCustomizer addQuestionTool(List<McpSyncClient> mcpSyncClients) {
         return builder -> {
@@ -62,6 +60,13 @@ public class AIConfig {
                     .defaultTools(
                             SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build());
         };
+    }
+     */
+
+    @Bean
+    ChatClientBuilderCustomizer addMcpTools(ToolCallbackProvider mcpToolCallbacks) {
+        return builder ->
+                builder.defaultTools(mcpToolCallbacks);
     }
 
 }

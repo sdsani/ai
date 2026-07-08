@@ -20,7 +20,10 @@ spring:
         stdio:
           # Following are two possible ways to configure the MCP client to use the Brave Search server.
           # When using servers-configuration option, don't place key placeholder in the configuration file, instead use environment variable to pass the key to the program.
-           servers-configuration: "classpath:mcp-servers-config.json"
+          # Option 1: Use servers-configuration to specify the configuration file for the MCP client.
+          servers-configuration: "classpath:mcp-servers-config.json"
+
+          # Option 2: Use connections to specify the Brave Search server connection details directly in the application.yaml file.
 #          connections:
 #            brave-search:
 #              env:
@@ -59,6 +62,9 @@ management:
 
 logging:
   level:
+    io.modelcontextprotocol: DEBUG
+    org.springframework.web.reactive.function.client: TRACE
+    reactor.netty.http.client: DEBUG
     org:
       springframework:
         ai:
