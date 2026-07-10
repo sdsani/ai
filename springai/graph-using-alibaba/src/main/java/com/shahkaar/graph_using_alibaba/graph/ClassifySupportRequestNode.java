@@ -29,7 +29,7 @@ public class ClassifySupportRequestNode implements NodeAction {
                                 Classify the customer support request as exactly one of:
                                 billing
                                 technical
-                                
+                                unknown
                                 Respond with only the category name.
                                 """)
                         .user(question)
@@ -38,10 +38,12 @@ public class ClassifySupportRequestNode implements NodeAction {
                 .trim()
                 .toLowerCase();
 
+        /* Instead of defaulting to technical, let's return unknown and ask Human to classify
         if (!category.equals("billing") && !category.equals("technical")) {
             log.info("Question category({}) unknown. Defaulting to technical.", category);
             category = "technical";
         }
+         */
 
         return Map.of("category", category);
     }

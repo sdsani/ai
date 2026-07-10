@@ -1,5 +1,6 @@
 package com.shahkaar.graph_using_alibaba.graph;
 
+import com.alibaba.cloud.ai.graph.CompileConfig;
 import com.alibaba.cloud.ai.graph.CompiledGraph;
 import com.alibaba.cloud.ai.graph.KeyStrategy;
 import com.alibaba.cloud.ai.graph.StateGraph;
@@ -24,6 +25,7 @@ public class SupportGraphConfiguration {
     static final String CLASSIFY = "classify";
     static final String BILLING = "billing";
     static final String TECHNICAL = "technical";
+    static final String HUMAN_CLASSIFY = "human-classify"; // <-- NEW
 
     @Bean
     CompiledGraph supportGraph(ChatClient chatClient) throws GraphStateException {
@@ -32,6 +34,8 @@ public class SupportGraphConfiguration {
                 // Nodes
                 .addNode(CLASSIFY,
                         node_async(new ClassifySupportRequestNode(chatClient)))
+                .addNode(HUMAN_CLASSIFY,
+                        node_async(new HumanClassificationNode())) // <-- NEW
                 .addNode(BILLING,
                         node_async(new BillingSupportNode(chatClient)))
                 .addNode(TECHNICAL,
@@ -41,22 +45,32 @@ public class SupportGraphConfiguration {
                 .addConditionalEdges(
                         CLASSIFY,
                         edge_async(state -> {
-                            String category =
-                                    state.value("category", String.class)
-                                            .orElse(TECHNICAL);
+
+                            String category = state.value("category", "unknown");
                             return switch (category) {
                                 case BILLING -> BILLING;
                                 case TECHNICAL -> TECHNICAL;
-                                default -> TECHNICAL;
+                                default -> HUMAN_CLASSIFY;
                             };
                         }),
                         Map.of(
                                 BILLING, BILLING,
-                                TECHNICAL, TECHNICAL
+                                TECHNICAL, TECHNICAL,
+                                HUMAN_CLASSIFY, HUMAN_CLASSIFY
                         ))
                 .addEdge(BILLING, END)
                 .addEdge(TECHNICAL, END)
-                .compile();
+                .addConditionalEdges(
+                        HUMAN_CLASSIFY,
+                        edge_async(state ->
+                                state.value("category", TECHNICAL)),
+                        Map.of(
+                                BILLING, BILLING,
+                                TECHNICAL, TECHNICAL
+                        ))
+                .compile(CompileConfig.builder()
+                        .interruptBefore(HUMAN_CLASSIFY)
+                        .build());
     }
 
     private Map<String, KeyStrategy> stateStrategies() {

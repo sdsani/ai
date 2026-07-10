@@ -19,13 +19,14 @@ Use Ali-baba's graph to build a graph-based workflow, and Spring AI's ChatClient
 Built on top of Chat Loop (text-based-chat-loop)  
 
 ![Sample Flow](docs/resources/sample-graph-flow.png)
+![Human In the Loop Flow](docs/resources/human-in-the-loop.png)
 
 ## Use Case
 
 For some circumstances deterministic workflows are better than autonomous planning. Sometimes you want:
-- predictable execution
-- explicit branching logic
-- controlled flow between steps
+- Predictable execution
+- Explicit branching logic
+- Controlled flow between steps
 - or deterministic handling of specific scenarios
 That’s where graph-based workflows come in. Rather than allowing the agent to freely decide every step,  
 a graph workflow defines an explicit flow of nodes and transitions between those nodes.  
@@ -42,6 +43,8 @@ The LLM still plays an important role, but the overall process is guided by a pr
 - Sample inputs
   - I was overcharged $50
   - My computer screen is frozen
+  - Do fish sleep? (Human-in-the-loop)
+- Added a human-in-the-loop node to the graph (HumanInTheLoopNode)
 
 ## How to Save cost on LLM
 To save cost on LLM interactions, you can:
