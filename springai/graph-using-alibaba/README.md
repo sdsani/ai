@@ -11,6 +11,7 @@ Foundational Graph components
 - [Source article](https://thetalkingapp.medium.com/spring-ai-recipe-building-a-graph-based-agentic-workflow-becfae64170a)
 - [Spring AI Alibaba](https://java2ai.com/)
 - [Graph Foundation](https://medium.com/@kiranvutukuri/14-graph-algorithms-for-ai-foundations-understanding-relationships-and-structure-dee5e3b99f2c)
+- [Adding a Loop to a Graph-Based Workflow](https://thetalkingapp.medium.com/spring-ai-recipe-adding-a-loop-to-a-graph-based-workflow-e062040e0440)
 
 ## Overview
 
@@ -20,6 +21,7 @@ Built on top of Chat Loop (text-based-chat-loop)
 
 ![Sample Flow](docs/resources/sample-graph-flow.png)
 ![Human In the Loop Flow](docs/resources/human-in-the-loop.png)
+![Loop Flow](docs/resources/loop-flow.png)
 
 ## Use Case
 
@@ -45,6 +47,7 @@ The LLM still plays an important role, but the overall process is guided by a pr
   - My computer screen is frozen
   - Do fish sleep? (Human-in-the-loop)
 - Added a human-in-the-loop node to the graph (HumanInTheLoopNode)
+- Added a loop with verification to the graph (CheckResolutionNode, EscalateToHumaNode)
 
 ## How to Save cost on LLM
 To save cost on LLM interactions, you can:

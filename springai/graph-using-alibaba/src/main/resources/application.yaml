@@ -46,4 +46,4 @@ logging:
           chat:
             client:
               advisor:
-                SimpleLoggerAdvisor: DEBUG
+                SimpleLoggerAdvisor: TRACE

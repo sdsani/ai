@@ -23,8 +23,10 @@ I am learning SpringAI. In this journey, I will read and write examples that wil
 | Streamable HTTP MCP Server | https://thetalkingapp.medium.com/spring-ai-recipe-streamable-http-mcp-server-e9c70590b872 | NONE |
 | Creating an MCP Client | https://thetalkingapp.medium.com/spring-ai-recipe-creating-an-mcp-client-9691ddc42dfd | ./springai-mcp |
 | Building a Graph-Based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-graph-based-agentic-workflow-becfae64170a | ./graph-using-alibaba |
-| Adding Human-in-the-Loop to a Graph-based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-adding-human-in-the-loop-to-a-graph-based-agentic-workflow-4a826cf89902 | Next |
-            
+| Adding Human-in-the-Loop to a Graph-based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-adding-human-in-the-loop-to-a-graph-based-agentic-workflow-4a826cf89902 | ./graph-using-alibaba |
+| Adding a Loop to a Graph-Based Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-adding-a-loop-to-a-graph-based-workflow-e062040e0440 | ./graph-using-alibaba |
+| Securing an MCP Server with an API Key | https://thetalkingapp.medium.com/spring-ai-recipe-securing-an-mcp-server-with-an-api-key-0a4b84fdf0dc | NEXT |
+
 
 ## How to Save Cost (Running OLLAMA locally)
 

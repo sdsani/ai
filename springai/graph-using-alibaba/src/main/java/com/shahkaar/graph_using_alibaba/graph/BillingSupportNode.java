@@ -18,10 +18,25 @@ public class BillingSupportNode implements NodeAction {
 
     @Override
     public Map<String, Object> apply(OverAllState state) throws Exception {
-
         log.info("Handling billing question.");
         String question = state.value("user_question", String.class)
                 .orElseThrow();
+        String feedback = state.value("feedback", "");
+
+        String userMessage = """
+                            Customer request:
+                            %s
+                            """.formatted(question);
+
+        if (!feedback.isBlank()) {
+            userMessage += """
+      
+                          Previous feedback on your last response:
+                          %s
+                          
+                          Revise your answer to address this feedback.
+                          """.formatted(feedback);
+        }
 
         var response = chatClient.prompt()
                 .system("""
@@ -29,7 +44,7 @@ public class BillingSupportNode implements NodeAction {
             Write a brief, helpful response to the customer.
             Do not promise refunds. Say that the billing team will review the account.
             """)
-                .user(question)
+                .user(userMessage)
                 .call()
                 .content();
 

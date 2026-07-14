@@ -26,6 +26,8 @@ public class SupportGraphConfiguration {
     static final String BILLING = "billing";
     static final String TECHNICAL = "technical";
     static final String HUMAN_CLASSIFY = "human-classify"; // <-- NEW
+    static final String CHECK_RESOLUTION = "check-resolution"; // <-- NEW for evaluation
+    static final String ESCALATE_TO_HUMAN = "escalate-to-human"; // <-- NEW for escalation
 
     @Bean
     CompiledGraph supportGraph(ChatClient chatClient) throws GraphStateException {
@@ -40,6 +42,10 @@ public class SupportGraphConfiguration {
                         node_async(new BillingSupportNode(chatClient)))
                 .addNode(TECHNICAL,
                         node_async(new TechnicalSupportNode(chatClient)))
+                .addNode(CHECK_RESOLUTION,
+                        node_async(new CheckResolutionNode(chatClient)))
+                .addNode(ESCALATE_TO_HUMAN,
+                        node_async(new EscalateToHumanNode()))
                 // Edges
                 .addEdge(START, CLASSIFY)
                 .addConditionalEdges(
@@ -58,8 +64,8 @@ public class SupportGraphConfiguration {
                                 TECHNICAL, TECHNICAL,
                                 HUMAN_CLASSIFY, HUMAN_CLASSIFY
                         ))
-                .addEdge(BILLING, END)
-                .addEdge(TECHNICAL, END)
+                .addEdge(BILLING, CHECK_RESOLUTION)
+                .addEdge(TECHNICAL, CHECK_RESOLUTION)
                 .addConditionalEdges(
                         HUMAN_CLASSIFY,
                         edge_async(state ->
@@ -68,6 +74,30 @@ public class SupportGraphConfiguration {
                                 BILLING, BILLING,
                                 TECHNICAL, TECHNICAL
                         ))
+                .addConditionalEdges(
+                        CHECK_RESOLUTION,
+                        edge_async(state -> {
+                            boolean resolved = state.value("resolved", false);
+                            int attempts = state.value("attempts", 0);
+                            String category = state.value("category", TECHNICAL);
+
+                            if (resolved) {
+                                return END;
+                            }
+
+                            if (attempts >= 3) {
+                                return ESCALATE_TO_HUMAN;
+                            }
+
+                            return category;
+                        }),
+                        Map.of(
+                                END, END,
+                                BILLING, BILLING,
+                                TECHNICAL, TECHNICAL,
+                                ESCALATE_TO_HUMAN, ESCALATE_TO_HUMAN
+                        )
+                )
                 .compile(CompileConfig.builder()
                         .interruptBefore(HUMAN_CLASSIFY)
                         .build());
