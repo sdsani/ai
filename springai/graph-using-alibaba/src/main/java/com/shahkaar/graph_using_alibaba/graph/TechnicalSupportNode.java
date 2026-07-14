@@ -20,17 +20,32 @@ public class TechnicalSupportNode implements NodeAction {
     public Map<String, Object> apply(OverAllState state) throws Exception {
 
         log.info("Handling technical question.");
-        String message = state.value("user_question", String.class)
+        String question = state.value("user_question", String.class)
                 .orElseThrow();
+        String feedback = state.value("feedback", "");
+
+        String userMessage = """
+                    Customer request:
+                    %s
+                    """.formatted(question);
+
+        if (!feedback.isBlank()) {
+            userMessage += """      
+              Previous feedback on your last response:
+              %s
+              
+              Revise your answer to address this feedback.
+              """.formatted(feedback);
+        }
 
         String response = chatClient.prompt()
                 .system("""
-            You are a technical support assistant.
-            Write a brief, helpful response to the customer.
-            Suggest one or two practical troubleshooting steps or
-            ask if they have tried turning it off and then back on again.
-            """)
-                .user(message)
+                        You are a technical support assistant.
+                        Write a brief, helpful response to the customer.
+                        Suggest one or two practical troubleshooting steps or
+                        ask if they have tried turning it off and then back on again.
+                        """)
+                .user(userMessage)
                 .call()
                 .content();
 
