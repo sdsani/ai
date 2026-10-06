@@ -25,7 +25,8 @@ I am learning SpringAI. In this journey, I will read and write examples that wil
 | Building a Graph-Based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-building-a-graph-based-agentic-workflow-becfae64170a | ./graph-using-alibaba |
 | Adding Human-in-the-Loop to a Graph-based Agentic Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-adding-human-in-the-loop-to-a-graph-based-agentic-workflow-4a826cf89902 | ./graph-using-alibaba |
 | Adding a Loop to a Graph-Based Workflow | https://thetalkingapp.medium.com/spring-ai-recipe-adding-a-loop-to-a-graph-based-workflow-e062040e0440 | ./graph-using-alibaba |
-| Securing an MCP Server with an API Key | https://thetalkingapp.medium.com/spring-ai-recipe-securing-an-mcp-server-with-an-api-key-0a4b84fdf0dc | NEXT |
+| Securing an MCP Server with an API Key | https://thetalkingapp.medium.com/spring-ai-recipe-securing-an-mcp-server-with-an-api-key-0a4b84fdf0dc | NONE |
+| Better LLM Request/Response Logging with ToolCallAdvisor | https://thetalkingapp.medium.com/spring-ai-recipe-better-llm-request-response-logging-with-toolcalladvisor-de3028af3d46 | NEXT |
 
 
 ## How to Save Cost (Running OLLAMA locally)
