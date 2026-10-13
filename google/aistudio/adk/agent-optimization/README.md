@@ -3,8 +3,9 @@
 ```
 Run this example using
 
-./gradlew run -PmainClass=com.shahkaar.App (Pick one of the main classes available)
-./gradlew run -PmainClass=com.shahkaar.InstructionsGoodPractice
+Configure a run configuration in your IDE with the following environment variables:
+GEMINI_API_KEY="YOUR_API_KEY"
+
     Test1: Normal testing
         You: "I can't log in to my account"
     Test2: Boundary testing
@@ -16,7 +17,7 @@ Run this example using
 
 ```
 
-## Advanced instruction writing
+## Advanced instruction writing (agent_instructions.txt)
 
 Problem: How to make sure that an agent will not misunderstand instructions, hallucinate or return unpredictable formats.  
 
@@ -129,7 +130,7 @@ User: "[Example challenging input]"
 You: "[Example of how to handle gracefully]"
 ```
 
-## Structured Output
+## Structured Output (AgentWithClearInstructionsAndStructuredOP.java)
 
 Problem: Unpredictable output breaks integration
 
@@ -146,7 +147,7 @@ According to ADK documentation, use Pydantic BaseModel to define the exact struc
 4. Complex schemas
 ```
 
-## Choosing and configuring the right model
+## Choosing and configuring the right model (AgentWithClearInstructionsAndStructuredOP.java)
 
 The problem: One size doesn’t fit all
 
