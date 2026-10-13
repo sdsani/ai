@@ -24,7 +24,7 @@ Vague instructions can lead to unpredictable results. To ensure that the agent u
 
 ### The Solution Structured instructions
 
-Guiding the agent: https://adk.dev/agents/llm-agents/#guide-the-agent-with-instructions
+[Guiding the agent](https://adk.dev/agents/llm-agents/#guide-the-agent-with-instructions)
 
 **Professional instruction pattern**  
 ADK recommends using markdown formatting in instructions to improve LLM comprehension. Professional instructions consist of five key patterns that work together to create predictable, high-quality agent behavior.  
@@ -135,7 +135,7 @@ Problem: Unpredictable output breaks integration
 
 The solution: Structured output with Pydantic:  
 Enforcing JSON with output_schema  
-Reference: ADK docs—structuring data: https://adk.dev/agents/llm-agents/#data-handling  
+[Reference: ADK docs—structuring data](https://adk.dev/agents/llm-agents/#data-handling)  
 
 ```
 According to ADK documentation, use Pydantic BaseModel to define the exact structure you need:
@@ -152,7 +152,7 @@ The problem: One size doesn’t fit all
 
 The solution: Strategic model configuration
 
-Advanced Configuration: https://adk.dev/agents/llm-agents/#advanced-configuration-and-control
+[Advanced Configuration](https://adk.dev/agents/llm-agents/#advanced-configuration-and-control)
 
 ```
 Start with Gemini Pro for prototyping and establishing quality baselines:
