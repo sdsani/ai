@@ -3,8 +3,9 @@
 ```
 Run this example using
 
-./gradlew run -PmainClass=com.shahkaar.App (Pick one of the main classes available)
-./gradlew run -PmainClass=com.shahkaar.InstructionsGoodPractice
+Configure a run configuration in your IDE with the following environment variables:
+GEMINI_API_KEY="YOUR_API_KEY"
+
     Test1: Normal testing
         You: "I can't log in to my account"
     Test2: Boundary testing
@@ -16,7 +17,7 @@ Run this example using
 
 ```
 
-## Advanced instruction writing
+## Advanced instruction writing (agent_instructions.txt)
 
 Problem: How to make sure that an agent will not misunderstand instructions, hallucinate or return unpredictable formats.  
 
@@ -24,7 +25,7 @@ Vague instructions can lead to unpredictable results. To ensure that the agent u
 
 ### The Solution Structured instructions
 
-Guiding the agent: https://adk.dev/agents/llm-agents/#guide-the-agent-with-instructions
+[Guiding the agent](https://adk.dev/agents/llm-agents/#guide-the-agent-with-instructions)
 
 **Professional instruction pattern**  
 ADK recommends using markdown formatting in instructions to improve LLM comprehension. Professional instructions consist of five key patterns that work together to create predictable, high-quality agent behavior.  
@@ -129,13 +130,13 @@ User: "[Example challenging input]"
 You: "[Example of how to handle gracefully]"
 ```
 
-## Structured Output
+## Structured Output (AgentWithClearInstructionsAndStructuredOP.java)
 
 Problem: Unpredictable output breaks integration
 
 The solution: Structured output with Pydantic:  
 Enforcing JSON with output_schema  
-Reference: ADK docs—structuring data: https://adk.dev/agents/llm-agents/#data-handling  
+[Reference: ADK docs—structuring data](https://adk.dev/agents/llm-agents/#data-handling)  
 
 ```
 According to ADK documentation, use Pydantic BaseModel to define the exact structure you need:
@@ -146,13 +147,13 @@ According to ADK documentation, use Pydantic BaseModel to define the exact struc
 4. Complex schemas
 ```
 
-## Choosing and configuring the right model
+## Choosing and configuring the right model (AgentWithClearInstructionsAndStructuredOP.java)
 
 The problem: One size doesn’t fit all
 
 The solution: Strategic model configuration
 
-Advanced Configuration: https://adk.dev/agents/llm-agents/#advanced-configuration-and-control
+[Advanced Configuration](https://adk.dev/agents/llm-agents/#advanced-configuration-and-control)
 
 ```
 Start with Gemini Pro for prototyping and establishing quality baselines:
