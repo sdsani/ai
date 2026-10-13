@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'io.freefair.lombok' version '9.8.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = project.findProperty('mainClass') ?: 'com.shahkaar.App'
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.adk:google-adk:1.11.0'
+
+    // SLF4J API & Implementation
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    implementation 'ch.qos.logback:logback-classic:1.5.3'
+
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+tasks.named('run', JavaExec) {
+    standardInput = System.in
+}
