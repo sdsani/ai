@@ -3,6 +3,7 @@ package com.shahkaar.agents;
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.SafetySetting;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import com.google.genai.types.Schema;
 import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static com.google.genai.types.HarmCategory.Known.*;
+import static com.google.genai.types.HarmBlockThreshold.Known.*;
 
 @Slf4j
 public class AgentWithClearInstructionsAndStructuredOP {
@@ -46,6 +49,11 @@ public class AgentWithClearInstructionsAndStructuredOP {
                 .generateContentConfig(GenerateContentConfig.builder()
                         .temperature(0.2F) // More deterministic output
                         .maxOutputTokens(500)
+                        .topP(.95F)  // # Consider top 95% of probability mass
+                        .topK(40F) // # Consider top 40 tokens
+                        .safetySettings(SafetySetting.builder()
+                                .category(HARM_CATEGORY_DANGEROUS_CONTENT)
+                                .threshold(BLOCK_MEDIUM_AND_ABOVE))
                         .build())
                 .build();
     }
