@@ -147,11 +147,21 @@ According to ADK documentation, use Pydantic BaseModel to define the exact struc
 4. Complex schemas
 ```
 
-## Choosing and configuring the right model (AgentWithClearInstructionsAndStructuredOP.java)
+## Strategic model configuration (AgentWithClearInstructionsAndStructuredOP.java)
 
 The problem: One size doesn’t fit all
 
+### Choosing and configuring the right model (Configure with Generate ContentConfig)
+
 The solution: Strategic model configuration
+
+```
+return LlmAgent.builder()
+                ...
+                .model("gemini-flash-latest")
+                ...
+                .build();
+```
 
 [Advanced Configuration](https://adk.dev/agents/llm-agents/#advanced-configuration-and-control)
 
@@ -171,5 +181,42 @@ Ideal for high-volume, user-facing production deployments.
 Perform a gap analysis after evaluating Flash against Pro to measure quality differences against the baseline, fine-tune prompts where necessary, and ensure Flash meets your production acceptance criteria.
 ```
 
+### Temperature: Creativity versus consistency
 
+```
+return LlmAgent.builder()
+                ...
+                .generateContentConfig(GenerateContentConfig.builder()
+                        .temperature(0.2F) // More deterministic output
+                        .maxOutputTokens(500)
+                ...
+                .build();
+```
 
+### Safety settings: Guardrails for your agent
+
+```
+return LlmAgent.builder()
+                ...
+                .generateContentConfig(GenerateContentConfig.builder()
+                        ...
+                        .safetySettings(SafetySetting.builder()
+                                .category(HARM_CATEGORY_DANGEROUS_CONTENT)
+                                .threshold(BLOCK_MEDIUM_AND_ABOVE))
+                        .build())
+                .build();
+```
+
+### Output tokens and sampling
+
+```
+LlmAgent.builder()
+                ...
+                .generateContentConfig(GenerateContentConfig.builder()
+                        ...
+                        .topP(.95F)  // # Consider top 95% of probability mass
+                        .topK(40F) // # Consider top 40 tokens
+                        ...
+                        .build())
+                .build();
+```
