@@ -220,3 +220,39 @@ LlmAgent.builder()
                         .build())
                 .build();
 ```
+
+## Planning for complex tasks
+
+👉The root problem: Complex tasks require breaking down the problem, considering options, and planning an approach before responding.
+
+[When using ADK, this capability is only available for Python](https://adk.dev/agents/llm-agents/#configure-a-planner)
+
+### Planning with BuiltInPlanner
+
+```
+Use BuiltInPlanner to leverage Gemini’s thinking feature: 
+“planner (optional): Assign a BasePlanner instance to enable multi-step reasoning and planning before execution. 
+BuiltInPlanner: Leverages the model’s built-in planning capabilities (e.g., Gemini's thinking feature).”
+```
+
+### Planning with PlanReActPlanner
+
+Use this planner when you are using a model that does not have built-in planning capabilities.
+
+This does not appear accurate since I do see Thinking config in the java. Also Spring boot example does support parameters.
+
+Python Code example
+```
+    return LlmAgent.builder()
+                .name("support_specialist")    // Agent Identity
+                ...
+                .generateContentConfig(GenerateContentConfig.builder()
+                        ...
+                        .thinkingConfig(ThinkingConfig.builder()
+                                .includeThoughts(true)
+                                //.thinkingBudget(1024)  // You can set either thinkingLevel or thinkingBudget, but not both.
+                                .thinkingLevel(ThinkingLevel.Known.MEDIUM)   // You can set either thinkingLevel or thinkingBudget, but not both.
+                                )
+                        .build())
+                .build();
+```

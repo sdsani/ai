@@ -2,14 +2,12 @@ package com.shahkaar.agents;
 
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
-import com.google.genai.types.GenerateContentConfig;
-import com.google.genai.types.SafetySetting;
+import com.google.genai.types.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.google.genai.types.Schema;
 import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -54,6 +52,11 @@ public class AgentWithClearInstructionsAndStructuredOP {
                         .safetySettings(SafetySetting.builder()
                                 .category(HARM_CATEGORY_DANGEROUS_CONTENT)
                                 .threshold(BLOCK_MEDIUM_AND_ABOVE))
+                        .thinkingConfig(ThinkingConfig.builder()
+                                .includeThoughts(true)
+                                //.thinkingBudget(1024)  // You can set either thinkingLevel or thinkingBudget, but not both.
+                                .thinkingLevel(ThinkingLevel.Known.MEDIUM)   // You can set either thinkingLevel or thinkingBudget, but not both.
+                                )
                         .build())
                 .build();
     }
