@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: adk-agent
+
+server:
+  port: 8080
+
+adk:
+  app-name: adk-spring-app
+  user-id: default-user
+  initial-state:
+    agentName: Alex Channa

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADK Chat Test</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --panel-alt: #1f2937;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #60a5fa;
+            --accent-strong: #2563eb;
+            --border: #374151;
+            --error: #f87171;
+            --success: #34d399;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg), #111827);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .container {
+            width: min(900px, 100%);
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--panel-alt);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 24px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        input, button, textarea {
+            font: inherit;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--panel);
+            color: var(--text);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 12px 18px;
+            font-weight: 600;
+            background: var(--accent-strong);
+            color: white;
+            border: none;
+            transition: opacity 0.2s ease;
+        }
+
+        button:hover { opacity: 0.95; }
+
+        button.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .status {
+            margin-bottom: 16px;
+            min-height: 24px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .status.error { color: var(--error); }
+        .status.success { color: var(--success); }
+
+        .response-box {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            min-height: 180px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .session-id {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        @media (max-width: 640px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ADK Chat Test</h1>
+        </div>
+
+        <div class="content">
+            <div class="controls">
+                <div>
+                    <label for="sessionId">Session ID</label>
+                    <input id="sessionId" type="text" placeholder="Create or paste a session ID" />
+                    <div id="sessionMeta" class="session-id">No active session</div>
+                </div>
+                <button id="createSessionBtn" class="secondary" type="button">Create Session</button>
+            </div>
+
+            <div class="row" style="margin-bottom: 12px;">
+                <textarea id="messageInput" placeholder="Type a message to send to the agent..." aria-label="Message input"></textarea>
+            </div>
+
+            <div class="row" style="margin-bottom: 16px;">
+                <button id="sendMessageBtn" type="button">Send Message</button>
+            </div>
+
+            <div id="status" class="status" aria-live="polite"></div>
+
+            <div class="response-box" id="responseBox">Response will appear here.</div>
+        </div>
+    </div>
+
+    <script>
+        const sessionInput = document.getElementById('sessionId');
+        const sessionMeta = document.getElementById('sessionMeta');
+        const messageInput = document.getElementById('messageInput');
+        const statusEl = document.getElementById('status');
+        const responseBox = document.getElementById('responseBox');
+
+        function setStatus(message, type = '') {
+            statusEl.textContent = message;
+            statusEl.className = 'status';
+            if (type) statusEl.classList.add(type);
+        }
+
+        async function createSession() {
+            setStatus('Creating session...');
+            try {
+                const response = await fetch('/api/chat/sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                sessionInput.value = data.sessionId;
+                sessionMeta.textContent = 'Active session: ' + data.sessionId;
+                setStatus('Session created successfully.', 'success');
+                return data.sessionId;
+            } catch (error) {
+                setStatus('Failed to create session: ' + error.message, 'error');
+                throw error;
+            }
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            let sessionId = sessionInput.value.trim();
+
+            if (!sessionId) {
+                sessionId = await createSession();
+            }
+
+            if (!message) {
+                setStatus('Please type a message before sending.', 'error');
+                return;
+            }
+
+            setStatus('Sending message...');
+            responseBox.textContent = 'Waiting for response...';
+
+            try {
+                const response = await fetch(`/api/chat/sessions/${encodeURIComponent(sessionId)}/messages`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                responseBox.textContent = data.response || 'No response returned.';
+                setStatus('Message sent successfully.', 'success');
+            } catch (error) {
+                responseBox.textContent = 'Error while calling the chat API.';
+                setStatus('Failed to send message: ' + error.message, 'error');
+            }
+        }
+
+        document.getElementById('createSessionBtn').addEventListener('click', async () => {
+            await createSession();
+        });
+
+        document.getElementById('sendMessageBtn').addEventListener('click', async () => {
+            await sendMessage();
+        });
+
+        messageInput.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
