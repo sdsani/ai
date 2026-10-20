@@ -1,5 +1,8 @@
 # Agent Optimization and Tuning
 
+[Keys](https://aistudio.google.com/api-keys)
+[Usage Info](https://aistudio.google.com/u/1/usage?timeRange=last-28-days&project=gen-lang-client-0434909001&pli=1)
+
 ```
 Run this example using
 

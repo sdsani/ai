@@ -20,6 +20,7 @@ public class InstructionsGoodPractice {
     }
 
     static void main(String[] args) {
+
         System.out.println(new InstructionsGoodPractice().getGreeting());
 
         RunConfig runConfig = RunConfig.builder().build();
