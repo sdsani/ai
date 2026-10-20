@@ -35,7 +35,7 @@ public class AgentConfig {
     @Bean
     public BaseAgent rootAgent(AdkProperties adkProperties) throws IOException {
 
-        log.warn(adkProperties.loadInstructions());
+        log.info(adkProperties.loadInstructions());
         return LlmAgent.builder()
                 .name("support_specialist")    // Agent Identity
                 .description("Professional customer support agent with clear role definition and boundaries")
