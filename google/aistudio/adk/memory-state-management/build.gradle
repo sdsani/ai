@@ -21,7 +21,7 @@ repositories {
 }
 
 application {
-    mainClass = project.findProperty('mainClass') ?: 'com.shahkaar.AdkSpringApplication'
+    mainClass = project.findProperty('mainClass') ?: 'com.shahkaar.App'
 }
 
 dependencies {

@@ -2,16 +2,13 @@ package com.shahkaar.config;
 
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
-import com.google.adk.agents.RunConfig;
-import com.google.adk.runner.Runner;
-import com.google.adk.sessions.InMemorySessionService;
 import com.google.genai.types.*;
-import com.shahkaar.agents.AgentWithSate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.IOException;
 import java.util.Map;
 
 import static com.google.genai.types.HarmBlockThreshold.Known.BLOCK_MEDIUM_AND_ABOVE;
@@ -20,7 +17,7 @@ import static com.google.genai.types.HarmCategory.Known.HARM_CATEGORY_DANGEROUS_
 @Configuration
 @EnableConfigurationProperties(AdkProperties.class)
 @Slf4j
-public class AdkConfiguration {
+public class AgentConfig {
 
     private static final Schema REQUEST_OUTPUT =
             Schema.builder()
@@ -36,9 +33,9 @@ public class AdkConfiguration {
                     .build();
 
     @Bean
-    public BaseAgent rootAgent(AdkProperties adkProperties) {
+    public BaseAgent rootAgent(AdkProperties adkProperties) throws IOException {
 
-        log.info(adkProperties.loadInstructions());
+        log.warn(adkProperties.loadInstructions());
         return LlmAgent.builder()
                 .name("support_specialist")    // Agent Identity
                 .description("Professional customer support agent with clear role definition and boundaries")
@@ -60,29 +57,6 @@ public class AdkConfiguration {
                                 .thinkingLevel(ThinkingLevel.Known.LOW)   // You can set either thinkingLevel or thinkingBudget, but not both.
                         )
                         .build())
-                .build();
-    }
-
-    @Bean
-    public InMemorySessionService sessionService() {
-        return new InMemorySessionService();
-    }
-
-    @Bean
-    public RunConfig runConfig() {
-        return RunConfig.builder().build();
-    }
-
-    @Bean
-    public Runner runner(
-            BaseAgent rootAgent,
-            AdkProperties properties,
-            InMemorySessionService sessionService) {
-
-        return Runner.builder()
-                .agent(rootAgent)
-                .appName(properties.getAppName())
-                .sessionService(sessionService)
                 .build();
     }
 }

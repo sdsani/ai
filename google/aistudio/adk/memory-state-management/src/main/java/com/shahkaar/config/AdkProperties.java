@@ -20,14 +20,13 @@ public class AdkProperties {
     private Map<String, Object> initialState = new HashMap<>();
     private Resource instructionsFile;
 
-    public String loadInstructions() {
+    public String loadInstructions() throws IOException {
+
         try (var inputStream = instructionsFile.getInputStream()) {
 
             return new String(
                     inputStream.readAllBytes(),
                     StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }
