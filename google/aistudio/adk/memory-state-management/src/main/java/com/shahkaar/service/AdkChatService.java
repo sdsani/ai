@@ -11,12 +11,14 @@ import com.google.genai.types.Part;
 import com.shahkaar.config.AdkProperties;
 import io.reactivex.rxjava3.core.Flowable;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class AdkChatService {
 
     private final Runner runner;
@@ -85,5 +87,22 @@ public class AdkChatService {
         );
 
         return response;
+    }
+
+    public void logSessionState(String sessionId) {
+
+        Session session = sessionService.getSession(
+                properties.getAppName(),
+                properties.getUserId(),
+                sessionId,
+                Optional.empty()
+        ).blockingGet();
+
+        if (session == null) {
+            throw new IllegalStateException(
+                    "Session not found: " + sessionId);
+        }
+
+        session.state().forEach((key, value) -> log.info("State Key: {} , Value: {}", key, value));
     }
 }

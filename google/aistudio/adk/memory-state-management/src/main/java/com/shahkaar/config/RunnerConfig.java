@@ -4,19 +4,16 @@ import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.RunConfig;
 import com.google.adk.runner.Runner;
 import com.google.adk.sessions.InMemorySessionService;
-import com.shahkaar.agents.AgentWithSate;
+import com.google.genai.types.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(AdkProperties.class)
-public class AdkConfiguration {
-
-    @Bean
-    public BaseAgent rootAgent() {
-        return AgentWithSate.ROOT_AGENT;
-    }
+@Slf4j
+public class RunnerConfig {
 
     @Bean
     public InMemorySessionService sessionService() {

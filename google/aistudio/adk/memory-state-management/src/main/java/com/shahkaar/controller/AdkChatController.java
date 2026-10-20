@@ -46,4 +46,11 @@ public class AdkChatController {
     }
 
     public record MessageRequest(String message) {}
+
+    // http://localhost:8080/api/chat/sessions/21335eac-f216-4ff0-ace2-23db19949e9d/state"
+    @GetMapping("/sessions/{sessionId}/state")
+    public void logSessionState(@PathVariable String sessionId) {
+        chatService.logSessionState(sessionId);
+    }
+
 }
