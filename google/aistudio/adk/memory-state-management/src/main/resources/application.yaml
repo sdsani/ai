@@ -8,6 +8,6 @@ server:
 adk:
   app-name: adk-spring-app
   user-id: default-user
-  instructions-file: classpath:agent_instructions.txt
+  instructions-file: classpath:agent_instructions.md
   initial-state:
     agentName: Alex Channa

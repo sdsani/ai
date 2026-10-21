@@ -168,3 +168,130 @@ agent = LlmAgent(
 2. [Optional templating: {key?}](https://adk.dev/sessions/state/#important-considerations)  
 ![How templating works with state](docs/resources/templating-with-state.png)
 
+#### Next question that comes into mind persistence
+
+```
+# All are written to state, but how long do they live?
+session.state["processing_step"] = "validation"
+session.state["user_language"] = "Spanish"
+session.state["api_endpoint"] = "https://api.example.com"
+```
+The answer: State namespaces control persistence scope.
+
+#### Namespace
+
+##### Problems without namespace
+- **Temporary data persists forever**: Memory leak over time.
+- **User preference lost when session ends**: User must re-configure every time.
+- **Global Config Stored per session**: Wasteful duplication.
+- **Key collisions within complex workflows**: Sub-agents and tools accidentally overwrite each other's state keys.
+
+**What you need**: Different persistence scopes for different data types.
+
+##### The solution: State namespaces
+
+[Organizing State with prefixs](https://adk.dev/sessions/state/#organizing-state-with-prefixes-scope-matters)
+
+ADK provides four state namespaces with different lifetimes:
+
+
+|Namespace |	Prefix | Lifetime |	Scope |	Example |
+|----|--------|-------|---------|-------|
+|Temporary	| temp:	| Current turn only | Discarded after invocation |	temp:step = "validating" |
+|Session	| (none)| Current conversation | Lost when session ends | topic = "refunds" |
+|User	| user:	| All sessions for this user | Persists across conversations | user:theme = "dark" |
+|App	| app:	| Global for all users | Persists for entire app | app:api_url = "..." |
+
+![Name Space Visual](docs/resources/name-space-visual-timing.png)
+
+Code Example
+
+```
+from google.adk.runners import Runner
+from google.adk.sessions import InMemorySessionService
+
+# After running agent
+session.state["temp:current_step"] = "validation"      # Lost after turn
+session.state["conversation_topic"] = "refunds"        # Lost after session
+session.state["user:language"] = "Spanish"             # Persists across sessions
+session.state["app:version"] = "2.0"                   # Global for all users
+```
+
+[**Core Concepts**](https://adk.dev/sessions/state/#organizing-state-with-prefixes-scope-matters)
+1. Temporary state: temp
+```
+User sends message
+    ↓
+[INVOCATION STARTS] ← temp: state created
+    ↓
+Agent processes request
+    ↓
+Agent returns response
+    ↓
+[INVOCATION ENDS] ← temp: state DISCARDED
+
+When to use:
+    Intermediate processing steps.
+    Temporary flags for current turn only.
+    Data that should be discarded after the agent completes.
+    DON’T use for: Data needed across turns.
+```
+2. Session state (no prefix)
+```
+User starts conversation
+    ↓
+[SESSION STARTS] ← Session state created
+    ↓
+Turn 1, Turn 2, Turn 3... (state persists)
+    ↓
+User closes/restarts conversation
+    ↓
+[SESSION ENDS] ← Session state DISCARDED
+
+When to use:
+    Conversation topic tracking.
+    Turn counters.
+    Shopping cart items (current session only).
+    DON’T use for: Data needed across multiple conversations.
+```
+3. User state: user:
+```
+User state persists across all sessions for the same user.
+
+User's Session 1:
+    state["user:language"] = "Spanish"
+    state["user:theme"] = "dark"
+    [Session ends]
+
+User's Session 2 (days later):
+    state.get("user:language") → "Spanish" (persisted!)
+    state.get("user:theme") → "dark" (persisted!)
+    
+When to use:
+    Language preferences.
+    Display theme (dark/light).
+    Subscription tier.
+    User profile information.
+    DON’T use for: Data specific to current conversation.
+```
+4. App state: app:
+```
+App state is global—all users see the same values.
+
+User A, Session 1:
+    state["app:api_url"] = "https://api.example.com"
+
+User B, Session 1:
+    state.get("app:api_url") → "https://api.example.com" (shared!)
+
+User C, Session 5:
+    state.get("app:api_url") → "https://api.example.com" (still shared!)
+    
+When to use:
+    API endpoints.
+    Feature flags.
+    Global configuration.
+    Application version.
+    DON’T use for: User-specific or session-specific data.
+```
+
