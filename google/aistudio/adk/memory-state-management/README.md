@@ -9,6 +9,22 @@ Stateless responders can answer one-off questions, but they can't manage meaning
 
 True intelligent assistants don't just react. They remember, adapt, and maintain state.  
 
+## Table of Contents
+
+- [Why this matters](#why-this-matters)
+- [Managing State and memory](#managing-state-and-memory)
+  - [Conversation history alone isn’t enough for programmatic control](#conversation-history-alone-isnt-enough-for-programmatic-control)
+    - [The limitation](#the-limitation)
+    - [Solution: Use session state for structured data](#solution-use-session-state-for-structured-data)
+      - [Core Concepts](#core-concepts)
+  - [The problem: How do agents use state values in their instructions?](#the-problem-how-do-agents-use-state-values-in-their-instructions)
+    - [The solution: State templating with {key}](#the-solution-state-templating-with-key)
+      - [Core concepts](#core-concepts-1)
+  - [Next question that comes into mind persistence](#next-question-that-comes-into-mind-persistence)
+    - [Namespace](#namespace)
+      - [Problems without namespace](#problems-without-namespace)
+      - [The solution: State namespaces](#the-solution-state-namespaces)
+
 ## Why this matters
 
 Production-grade applications require deterministic data handling and personalized user journeys,  
